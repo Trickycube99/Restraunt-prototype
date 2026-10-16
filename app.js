@@ -266,21 +266,59 @@
   }
 
   // ==========================================================================
-  // 3. Study 2: Botanical Coffee Branch Canvas
+  // 3. Study 2: Botanical Coffee Branch Canvas (Dynamic Cherry & Jasmine Blossom)
   // ==========================================================================
   const branchCanvas = document.getElementById('branch-canvas');
   let branchCtx = null;
   const branchImg = new Image();
   branchImg.src = './assets/branch.jpg';
 
+  let branchHover = {
+    active: false,
+    x: 0.5,
+    y: 0.5,
+    currentScale: 1.0,
+    currentDx: 0,
+    currentDy: 0,
+    rippleRadius: 0,
+    rippleAlpha: 0,
+    rippleX: 0.5,
+    rippleY: 0.5
+  };
+
+  // Drifting jasmine petals & golden mist motes
+  const botanicalParticles = [];
+  for (let i = 0; i < 28; i++) {
+    botanicalParticles.push({
+      x: Math.random(),
+      y: Math.random(),
+      size: i % 2 === 0 ? 3.5 + Math.random() * 4.5 : 1.2 + Math.random() * 2.2,
+      isPetal: i % 2 === 0,
+      angle: Math.random() * Math.PI * 2,
+      rotationSpeed: (Math.random() - 0.5) * 0.02,
+      speedX: 0.0004 + Math.random() * 0.0008,
+      speedY: (Math.random() - 0.5) * 0.0004,
+      wobbleSpeed: 0.01 + Math.random() * 0.02,
+      wobbleOffset: Math.random() * Math.PI * 2,
+      opacity: i % 2 === 0 ? 0.35 + Math.random() * 0.45 : 0.2 + Math.random() * 0.45
+    });
+  }
+
   function initBranchCanvas() {
     if (!branchCanvas) return;
     branchCtx = branchCanvas.getContext('2d');
 
-    function renderBranch() {
+    let animFrameId = null;
+    let time = 0;
+
+    function animateBranch() {
+      time += 0.02;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = branchCanvas.getBoundingClientRect();
-      if (rect.width === 0 || rect.height === 0) return;
+      if (rect.width === 0 || rect.height === 0) {
+        animFrameId = requestAnimationFrame(animateBranch);
+        return;
+      }
 
       if (branchCanvas.width !== rect.width * dpr) {
         branchCanvas.width = rect.width * dpr;
@@ -299,20 +337,142 @@
       if (branchImg.complete && branchImg.naturalWidth > 0) {
         const sw = branchImg.naturalWidth;
         const sh = branchImg.naturalHeight;
-        const scale = Math.min(w * 0.95 / sw, h * 0.95 / sh);
+        const baseScale = Math.min(w * 0.95 / sw, h * 0.95 / sh);
+
+        // Smooth interactive sway and scale
+        const targetScale = branchHover.active ? 1.05 : 1.0;
+        const targetDx = branchHover.active ? (0.5 - branchHover.x) * 26 : Math.sin(time * 0.5) * 4;
+        const targetDy = branchHover.active ? (0.5 - branchHover.y) * 18 : Math.cos(time * 0.4) * 3;
+
+        branchHover.currentScale += (targetScale - branchHover.currentScale) * 0.08;
+        branchHover.currentDx += (targetDx - branchHover.currentDx) * 0.08;
+        branchHover.currentDy += (targetDy - branchHover.currentDy) * 0.08;
+
+        const scale = baseScale * branchHover.currentScale;
         const dw = sw * scale;
         const dh = sh * scale;
-        const dx = (w - dw) / 2;
-        const dy = (h - dh) / 2;
+        const dx = (w - dw) / 2 + branchHover.currentDx;
+        const dy = (h - dh) / 2 + branchHover.currentDy;
 
         branchCtx.drawImage(branchImg, dx, dy, dw, dh);
+
+        // Interactive morning sunbeam highlight over cherries
+        if (branchHover.active) {
+          const sunGrad = branchCtx.createRadialGradient(
+            branchHover.x * w, branchHover.y * h, 12,
+            branchHover.x * w, branchHover.y * h, 260
+          );
+          sunGrad.addColorStop(0, 'rgba(255, 248, 230, 0.42)');
+          sunGrad.addColorStop(0.4, 'rgba(255, 235, 215, 0.18)');
+          sunGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+          branchCtx.fillStyle = sunGrad;
+          branchCtx.fillRect(0, 0, w, h);
+        }
+
+        // Click Dew Ripple across cherries
+        if (branchHover.rippleAlpha > 0.01) {
+          branchHover.rippleRadius += 4.5;
+          branchHover.rippleAlpha *= 0.93;
+
+          branchCtx.strokeStyle = `rgba(180, 40, 50, ${branchHover.rippleAlpha * 0.55})`;
+          branchCtx.lineWidth = 1.8;
+          branchCtx.beginPath();
+          branchCtx.arc(branchHover.rippleX * w, branchHover.rippleY * h, branchHover.rippleRadius, 0, Math.PI * 2);
+          branchCtx.stroke();
+
+          branchCtx.strokeStyle = `rgba(255, 255, 255, ${branchHover.rippleAlpha * 0.8})`;
+          branchCtx.lineWidth = 1.2;
+          branchCtx.beginPath();
+          branchCtx.arc(branchHover.rippleX * w, branchHover.rippleY * h, Math.max(0, branchHover.rippleRadius - 6), 0, Math.PI * 2);
+          branchCtx.stroke();
+        }
+
+        // Render ambient floating petals and dewy pollen
+        botanicalParticles.forEach((p) => {
+          p.x += p.speedX;
+          p.y += p.speedY + Math.sin(time * p.wobbleSpeed + p.wobbleOffset) * 0.0003;
+          p.angle += p.rotationSpeed;
+
+          // Wrap around canvas
+          if (p.x > 1.05) p.x = -0.05;
+          if (p.x < -0.05) p.x = 1.05;
+          if (p.y > 1.05) p.y = -0.05;
+          if (p.y < -0.05) p.y = 1.05;
+
+          // Slight repulsion from cursor if nearby
+          if (branchHover.active) {
+            const cdx = p.x - branchHover.x;
+            const cdy = p.y - branchHover.y;
+            const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+            if (cdist < 0.16 && cdist > 0.001) {
+              p.x += (cdx / cdist) * 0.004;
+              p.y += (cdy / cdist) * 0.004;
+            }
+          }
+
+          const px = p.x * w;
+          const py = p.y * h;
+
+          branchCtx.save();
+          branchCtx.translate(px, py);
+          branchCtx.rotate(p.angle);
+
+          if (p.isPetal) {
+            // Translucent white jasmine blossom petal
+            branchCtx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+            branchCtx.beginPath();
+            branchCtx.ellipse(0, 0, p.size * 1.5, p.size * 0.75, 0, 0, Math.PI * 2);
+            branchCtx.fill();
+            branchCtx.strokeStyle = `rgba(235, 220, 205, ${p.opacity * 0.6})`;
+            branchCtx.lineWidth = 0.6;
+            branchCtx.stroke();
+          } else {
+            // Golden morning mist / floral pollen mote
+            branchCtx.fillStyle = `rgba(220, 180, 110, ${p.opacity})`;
+            branchCtx.beginPath();
+            branchCtx.arc(0, 0, p.size, 0, Math.PI * 2);
+            branchCtx.fill();
+          }
+
+          branchCtx.restore();
+        });
       }
 
       branchCtx.restore();
+      animFrameId = requestAnimationFrame(animateBranch);
     }
 
-    branchImg.onload = renderBranch;
-    window.addEventListener('resize', renderBranch);
+    branchImg.onload = () => {
+      if (!animFrameId) {
+        animateBranch();
+      }
+    };
+    if (branchImg.complete) {
+      animateBranch();
+    }
+
+    branchCanvas.addEventListener('mouseenter', () => {
+      branchHover.active = true;
+    });
+
+    branchCanvas.addEventListener('mousemove', (e) => {
+      const rect = branchCanvas.getBoundingClientRect();
+      branchHover.x = (e.clientX - rect.left) / rect.width;
+      branchHover.y = (e.clientY - rect.top) / rect.height;
+      branchHover.active = true;
+    });
+
+    branchCanvas.addEventListener('mouseleave', () => {
+      branchHover.active = false;
+    });
+
+    branchCanvas.addEventListener('click', (e) => {
+      const rect = branchCanvas.getBoundingClientRect();
+      branchHover.rippleX = (e.clientX - rect.left) / rect.width;
+      branchHover.rippleY = (e.clientY - rect.top) / rect.height;
+      branchHover.rippleRadius = 14;
+      branchHover.rippleAlpha = 0.9;
+    });
   }
 
   // ==========================================================================
@@ -391,12 +551,13 @@
   }
 
   // ==========================================================================
-  // 5. Study 4: Porcelain Pour-Over Dripper (Steam Canvas)
+  // 5. Study 4: Porcelain Pour-Over Dripper (Steam Canvas + Interactive Parallax)
   // ==========================================================================
   const dripperCanvas = document.getElementById('dripper-canvas');
   let dripperCtx = null;
   const dripperImg = new Image();
   dripperImg.src = './assets/dripper.jpg';
+  let dripperHover = { active: false, x: 0.5, y: 0.5, currentScale: 1.0, currentDx: 0, currentDy: 0 };
 
   const steamParticles = [];
   for (let i = 0; i < 28; i++) {
@@ -439,14 +600,26 @@
       if (dripperImg.complete && dripperImg.naturalWidth > 0) {
         const sw = dripperImg.naturalWidth;
         const sh = dripperImg.naturalHeight;
-        const scale = Math.min(w * 0.94 / sw, h * 0.94 / sh);
+        const baseScale = Math.min(w * 0.94 / sw, h * 0.94 / sh);
+
+        // Same interactive hover zoom (1.07x) & magnetic parallax as croissant
+        const targetScale = dripperHover.active ? 1.07 : 1.0;
+        const targetDx = dripperHover.active ? (0.5 - dripperHover.x) * 28 : 0;
+        const targetDy = dripperHover.active ? (0.5 - dripperHover.y) * 20 : 0;
+
+        dripperHover.currentScale += (targetScale - dripperHover.currentScale) * 0.1;
+        dripperHover.currentDx += (targetDx - dripperHover.currentDx) * 0.1;
+        dripperHover.currentDy += (targetDy - dripperHover.currentDy) * 0.1;
+
+        const scale = baseScale * dripperHover.currentScale;
         const dw = sw * scale;
         const dh = sh * scale;
-        const dx = (w - dw) / 2;
-        const dy = (h - dh) / 2;
+        const dx = (w - dw) / 2 + dripperHover.currentDx;
+        const dy = (h - dh) / 2 + dripperHover.currentDy;
 
         dripperCtx.drawImage(dripperImg, dx, dy, dw, dh);
 
+        // Rising steam particles follow dripper position
         steamParticles.forEach((p) => {
           p.y -= p.speedY;
           p.x += p.driftX;
@@ -460,16 +633,19 @@
             p.opacity = 0.06 + Math.random() * 0.12;
           }
 
+          const steamCenterX = p.x * w + dripperHover.currentDx * 0.6;
+          const steamCenterY = p.y * h + dripperHover.currentDy * 0.6;
+
           const grad = dripperCtx.createRadialGradient(
-            p.x * w, p.y * h, 0,
-            p.x * w, p.y * h, p.radius
+            steamCenterX, steamCenterY, 0,
+            steamCenterX, steamCenterY, p.radius
           );
           grad.addColorStop(0, `rgba(255, 255, 255, ${Math.max(0, p.opacity)})`);
           grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
           dripperCtx.fillStyle = grad;
           dripperCtx.beginPath();
-          dripperCtx.arc(p.x * w, p.y * h, p.radius, 0, Math.PI * 2);
+          dripperCtx.arc(steamCenterX, steamCenterY, p.radius, 0, Math.PI * 2);
           dripperCtx.fill();
         });
       }
@@ -481,6 +657,24 @@
     dripperImg.onload = () => {
       animateDripper();
     };
+    if (dripperImg.complete) {
+      animateDripper();
+    }
+
+    dripperCanvas.addEventListener('mouseenter', () => {
+      dripperHover.active = true;
+    });
+
+    dripperCanvas.addEventListener('mousemove', (e) => {
+      const rect = dripperCanvas.getBoundingClientRect();
+      dripperHover.x = (e.clientX - rect.left) / rect.width;
+      dripperHover.y = (e.clientY - rect.top) / rect.height;
+      dripperHover.active = true;
+    });
+
+    dripperCanvas.addEventListener('mouseleave', () => {
+      dripperHover.active = false;
+    });
   }
 
   // ==========================================================================
@@ -490,16 +684,19 @@
   let croissantCtx = null;
   const croissantImg = new Image();
   croissantImg.src = './assets/croissant.jpg';
-  let croissantHover = { active: false, x: 0.5, y: 0.5 };
+  let croissantHover = { active: false, x: 0.5, y: 0.5, currentScale: 1.0, currentDx: 0, currentDy: 0 };
 
   function initCroissantCanvas() {
     if (!croissantCanvas) return;
     croissantCtx = croissantCanvas.getContext('2d');
 
-    function renderCroissant() {
+    function animateCroissant() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = croissantCanvas.getBoundingClientRect();
-      if (rect.width === 0 || rect.height === 0) return;
+      if (rect.width === 0 || rect.height === 0) {
+        requestAnimationFrame(animateCroissant);
+        return;
+      }
 
       if (croissantCanvas.width !== rect.width * dpr) {
         croissantCanvas.width = rect.width * dpr;
@@ -519,20 +716,32 @@
         const sw = croissantImg.naturalWidth;
         const sh = croissantImg.naturalHeight;
         const baseScale = Math.min(w * 0.94 / sw, h * 0.94 / sh);
-        const scale = croissantHover.active ? baseScale * 1.07 : baseScale;
+
+        const targetScale = croissantHover.active ? 1.07 : 1.0;
+        const targetDx = croissantHover.active ? (0.5 - croissantHover.x) * 28 : 0;
+        const targetDy = croissantHover.active ? (0.5 - croissantHover.y) * 20 : 0;
+
+        croissantHover.currentScale += (targetScale - croissantHover.currentScale) * 0.1;
+        croissantHover.currentDx += (targetDx - croissantHover.currentDx) * 0.1;
+        croissantHover.currentDy += (targetDy - croissantHover.currentDy) * 0.1;
+
+        const scale = baseScale * croissantHover.currentScale;
         const dw = sw * scale;
         const dh = sh * scale;
-        const dx = (w - dw) / 2 + (croissantHover.active ? (0.5 - croissantHover.x) * 28 : 0);
-        const dy = (h - dh) / 2 + (croissantHover.active ? (0.5 - croissantHover.y) * 20 : 0);
+        const dx = (w - dw) / 2 + croissantHover.currentDx;
+        const dy = (h - dh) / 2 + croissantHover.currentDy;
 
         croissantCtx.drawImage(croissantImg, dx, dy, dw, dh);
       }
 
       croissantCtx.restore();
+      requestAnimationFrame(animateCroissant);
     }
 
-    croissantImg.onload = renderCroissant;
-    window.addEventListener('resize', renderCroissant);
+    croissantImg.onload = animateCroissant;
+    if (croissantImg.complete) {
+      animateCroissant();
+    }
 
     croissantCanvas.addEventListener('mouseenter', () => {
       croissantHover.active = true;
@@ -542,12 +751,11 @@
       const rect = croissantCanvas.getBoundingClientRect();
       croissantHover.x = (e.clientX - rect.left) / rect.width;
       croissantHover.y = (e.clientY - rect.top) / rect.height;
-      renderCroissant();
+      croissantHover.active = true;
     });
 
     croissantCanvas.addEventListener('mouseleave', () => {
       croissantHover.active = false;
-      renderCroissant();
     });
   }
 
@@ -659,7 +867,12 @@
 
   function renderCart() {
     const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-    bagCountBadge.textContent = `(${totalCount})`;
+    bagCountBadge.textContent = totalCount;
+
+    if (cartToggleBtn) {
+      cartToggleBtn.classList.add('bump');
+      setTimeout(() => cartToggleBtn.classList.remove('bump'), 250);
+    }
 
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = '';
@@ -734,16 +947,107 @@
   }
 
   // ==========================================================================
-  // 9. Newsletter Handler & Master Boot
+  // 9. Newsletter Handler & Navigation Spy
   // ==========================================================================
   window.handleNewsletter = function () {
     const input = document.getElementById('newsletter-input');
     const feedback = document.getElementById('newsletter-feedback');
     if (input && input.value) {
-      feedback.textContent = `Thank you. ${input.value} is now registered.`;
+      feedback.textContent = `Thank you. ${input.value} is now registered for the Seasonal Dispatch.`;
       input.value = '';
     }
   };
+
+  function initNavigationSpy() {
+    const navLinks = document.querySelectorAll('.main-nav .nav-link');
+    const sections = [];
+
+    navLinks.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const el = document.querySelector(href);
+        if (el) {
+          sections.push({ id: href.replace('#', ''), element: el, link: link });
+        }
+      }
+    });
+
+    function setActiveLink(targetId) {
+      navLinks.forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href === `#${targetId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').replace('#', '');
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          const headerOffset = 68;
+          const elementPosition = targetSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          setActiveLink(targetId);
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    const brandLogo = document.getElementById('brand-logo');
+    if (brandLogo) {
+      brandLogo.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveLink('hero-track');
+      });
+    }
+
+    // Scroll spy updates underline automatically as user scrolls
+    let scrollTimeout = null;
+    function onScrollSpy() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollY < 160) {
+        setActiveLink('hero-track');
+        return;
+      }
+
+      const viewportOffset = scrollY + window.innerHeight * 0.35;
+      let activeId = 'hero-track';
+
+      for (let i = 0; i < sections.length; i++) {
+        const sec = sections[i];
+        const top = sec.element.offsetTop;
+        const height = sec.element.offsetHeight;
+        if (viewportOffset >= top && viewportOffset < top + height) {
+          activeId = sec.id;
+          break;
+        }
+      }
+
+      setActiveLink(activeId);
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!scrollTimeout) {
+        scrollTimeout = requestAnimationFrame(() => {
+          onScrollSpy();
+          scrollTimeout = null;
+        });
+      }
+    }, { passive: true });
+
+    onScrollSpy();
+  }
 
   function init() {
     window.addEventListener('resize', resizeHeroCanvas);
@@ -759,6 +1063,7 @@
     initLatteCanvas();
 
     initCart();
+    initNavigationSpy();
   }
 
   if (document.readyState === 'loading') {

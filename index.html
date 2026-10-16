@@ -23,7 +23,7 @@
       </div>
 
       <nav class="main-nav" aria-label="Primary Navigation">
-        <a href="#hero-track" class="nav-link">The Ritual</a>
+        <a href="#hero-track" class="nav-link active">The Ritual</a>
         <a href="#manifesto" class="nav-link">Philosophy</a>
         <a href="#grinds-study" class="nav-link">The Grind</a>
         <a href="#botanical-study" class="nav-link">Terroir</a>
@@ -34,7 +34,12 @@
 
       <div class="header-actions">
         <button id="cart-toggle-btn" class="bag-toggle-btn" aria-label="View shopping bag">
-          Bag <span id="bag-count-badge">(0)</span>
+          <svg class="bag-icon" width="22" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span id="bag-count-badge" class="bag-count-badge">0</span>
         </button>
       </div>
     </div>
@@ -418,9 +423,17 @@
           <span class="dispatch-header">The Seasonal Dispatch</span>
           <p class="dispatch-subtext">Receive quiet notes on new harvest lots and limited ceramic releases.</p>
           <form id="newsletter-form" class="dispatch-form-centered" action="#" method="POST" onsubmit="event.preventDefault(); window.handleNewsletter();">
-            <label for="newsletter-input" class="sr-only">Email address</label>
-            <input type="email" id="newsletter-input" placeholder="Your email address" required class="dispatch-input-centered">
-            <button type="submit" class="dispatch-btn-centered">Subscribe</button>
+            <div class="dispatch-input-wrapper">
+              <label for="newsletter-input" class="sr-only">Email address</label>
+              <input type="email" id="newsletter-input" placeholder="Your email address" required class="dispatch-input-centered">
+            </div>
+            <button type="submit" class="dispatch-btn-centered" id="subscribe-submit-btn">
+              <span>Subscribe</span>
+              <svg class="btn-arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
           </form>
           <span id="newsletter-feedback" class="dispatch-msg"></span>
         </div>
