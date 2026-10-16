@@ -1,0 +1,903 @@
+/* ==========================================================================
+   KAFFA STUDIOS — THE POETRY OF EXTRACTION
+   Typography: Playwrite CA (Editorial) + Caveat (Header Nav & Menu Items)
+   Layout: Center-Oriented, Refined Small Scale, Anti-Card Minimalist
+   Background: Pure Solid White (#FFFFFF)
+   ========================================================================== */
+
+/* Universal Reset & Playwrite CA Default */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Playwrite CA', cursive, serif;
+}
+
+:root {
+  --bg-pure-white: #FFFFFF;
+  --ink-primary: #141414;
+  --ink-secondary: #484848;
+  --ink-subtle: #787878;
+  --ink-faint: #AFAFAF;
+  --line-delicate: rgba(0, 0, 0, 0.07);
+  
+  --container-center: 1040px;
+  --header-height: 70px;
+  --transition-gentle: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  font-size: 15px; /* Refined slightly smaller base scale */
+  background-color: var(--bg-pure-white);
+  color: var(--ink-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.theme-white {
+  background-color: var(--bg-pure-white);
+  color: var(--ink-primary);
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.95;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Menu Font Definition: CAVEAT
+   ========================================================================== */
+.menu-font, .menu-font * {
+  font-family: 'Caveat', cursive !important;
+}
+
+/* Common Centered Container */
+.center-container {
+  width: 100%;
+  max-width: var(--container-center);
+  margin: 0 auto;
+  padding: 0 32px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Header & Navigation (In Caveat Font)
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-delicate);
+  z-index: 100;
+  transition: all var(--transition-gentle);
+}
+
+.header-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-link {
+  text-decoration: none;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  transition: opacity var(--transition-gentle);
+}
+
+.brand-link:hover {
+  opacity: 0.65;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 1.35rem;
+  color: var(--ink-secondary);
+  transition: color var(--transition-gentle);
+}
+
+.nav-link:hover {
+  color: var(--ink-primary);
+}
+
+.bag-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--ink-primary);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-gentle);
+}
+
+.bag-toggle-btn:hover {
+  border-bottom-color: var(--ink-primary);
+}
+
+/* ==========================================================================
+   Hero Section: Scroll-Driven Background Canvas (Centered Stanzas)
+   ========================================================================== */
+.hero-track {
+  position: relative;
+  width: 100%;
+  height: 400vh;
+  background-color: var(--bg-pure-white);
+}
+
+.hero-sticky-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--bg-pure-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  background-color: transparent;
+}
+
+/* Centered Floating Stanzas */
+.story-stream {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--container-center);
+  margin: 0 auto;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.centered-stanza {
+  position: absolute;
+  top: 50%;
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 740px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+  pointer-events: none;
+}
+
+.centered-stanza.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.stanza-tag {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink-subtle);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.stanza-headline {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-primary);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.stanza-prose {
+  font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+  color: var(--ink-secondary);
+  line-height: 2.0;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Section Common Rules (Refined Smaller Scale & Center-Oriented)
+   ========================================================================== */
+section {
+  padding: 140px 0;
+  background-color: var(--bg-pure-white);
+  position: relative;
+  text-align: center;
+}
+
+.section-kicker {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink-subtle);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.centered-statement {
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-primary);
+  max-width: 840px;
+  margin: 0 auto 32px auto;
+  text-align: center;
+}
+
+.centered-intro {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.centered-title {
+  font-size: clamp(1.4rem, 2.3vw, 1.95rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-primary);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.centered-desc {
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+  line-height: 2.0;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.centered-prose-block {
+  max-width: 740px;
+  margin: 32px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+}
+
+.centered-prose {
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+  line-height: 2.05;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Interactive Canvas Study Frames (Centered)
+   ========================================================================== */
+.grinds-canvas-box, .beans-canvas-box, .botanical-canvas-box, .latte-canvas-box {
+  width: 100%;
+  max-width: 880px;
+  height: clamp(340px, 44vh, 480px);
+  margin: 36px auto;
+  cursor: crosshair;
+}
+
+.study-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  margin: 0 auto;
+}
+
+.centered-metrics-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.95rem;
+  color: var(--ink-subtle);
+  padding-top: 18px;
+  border-top: 1px solid var(--line-delicate);
+  max-width: 780px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.dot-sep {
+  color: var(--ink-faint);
+}
+
+/* Craft Dual Centered Layout */
+.craft-dual-centered {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.craft-item-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+
+.craft-canvas-frame {
+  width: 100%;
+  height: 340px;
+}
+
+.craft-text-centered {
+  text-align: center;
+}
+
+.craft-title {
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ink-primary);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.craft-desc {
+  font-size: 1.0rem;
+  color: var(--ink-secondary);
+  line-height: 1.95;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Section 7: The Menu Archive (In CAVEAT Font with Product Images)
+   ========================================================================== */
+.section-menu-archive {
+  padding: 160px 0;
+  border-top: 1px solid var(--line-delicate);
+}
+
+.menu-header-centered {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.menu-kicker {
+  display: block;
+  font-size: 1.35rem;
+  color: var(--ink-subtle);
+  margin-bottom: 8px;
+}
+
+.menu-main-title {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 14px;
+}
+
+.menu-intro-text {
+  font-size: 1.35rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Menu Items Flow (Centered, Anti-Card) */
+.menu-items-flow {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line-delicate);
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.menu-item-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line-delicate);
+  transition: opacity var(--transition-gentle);
+}
+
+.menu-item-entry:hover {
+  opacity: 0.8;
+}
+
+.menu-item-visual {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 6px auto;
+}
+
+.menu-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 0.35s ease;
+}
+
+.menu-item-entry:hover .menu-item-img {
+  transform: scale(1.05);
+}
+
+.menu-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  width: 100%;
+}
+
+.menu-item-name {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.3;
+}
+
+.menu-item-origin {
+  font-size: 1.25rem;
+  color: var(--ink-subtle);
+  display: block;
+}
+
+.menu-item-notes {
+  font-size: 1.25rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 6px auto 14px auto;
+}
+
+.menu-item-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.menu-item-price {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.menu-add-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--ink-primary);
+  cursor: pointer;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--ink-primary);
+  transition: all var(--transition-gentle);
+}
+
+.menu-add-btn:hover {
+  opacity: 0.55;
+}
+
+/* ==========================================================================
+   Section 8: Global Ateliers (Centered)
+   ========================================================================== */
+.centered-studios-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  border-top: 1px solid var(--line-delicate);
+  padding-top: 50px;
+  margin-top: 20px;
+}
+
+.studio-center-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.studio-city {
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--ink-primary);
+}
+
+.studio-desc {
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.9;
+  text-align: center;
+}
+
+.studio-time {
+  font-size: 0.88rem;
+  color: var(--ink-subtle);
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   Centered Editorial Footer
+   ========================================================================== */
+.site-footer {
+  padding: 120px 0 50px 0;
+  border-top: 1px solid var(--line-delicate);
+  background-color: var(--bg-pure-white);
+  text-align: center;
+}
+
+.footer-center-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 640px;
+  margin: 0 auto 70px auto;
+  text-align: center;
+}
+
+.footer-brand-title {
+  font-size: 1.6rem;
+  color: var(--ink-primary);
+}
+
+.footer-manifesto-text {
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+  line-height: 2.0;
+  text-align: center;
+}
+
+.footer-dispatch-centered {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.dispatch-header {
+  font-size: 1.2rem;
+  color: var(--ink-primary);
+}
+
+.dispatch-subtext {
+  font-size: 0.95rem;
+  color: var(--ink-subtle);
+}
+
+.dispatch-form-centered {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid var(--ink-primary);
+  padding-bottom: 8px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.dispatch-input-centered {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.0rem;
+  color: var(--ink-primary);
+  outline: none;
+  text-align: center;
+}
+
+.dispatch-btn-centered {
+  background: transparent;
+  border: none;
+  font-size: 1.0rem;
+  color: var(--ink-primary);
+  cursor: pointer;
+  transition: opacity var(--transition-gentle);
+}
+
+.dispatch-btn-centered:hover {
+  opacity: 0.5;
+}
+
+.dispatch-msg {
+  font-size: 0.95rem;
+  color: #2E7D32;
+  margin-top: 6px;
+}
+
+.footer-bottom-centered {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  border-top: 1px solid var(--line-delicate);
+  font-size: 0.95rem;
+  color: var(--ink-subtle);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.top-anchor-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  color: var(--ink-primary);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-gentle);
+}
+
+.top-anchor-btn:hover {
+  border-bottom-color: var(--ink-primary);
+}
+
+/* ==========================================================================
+   Slide-Over Bag Drawer (In Caveat Font)
+   ========================================================================== */
+.cart-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  visibility: hidden;
+  transition: visibility var(--transition-gentle);
+}
+
+.cart-drawer.open {
+  visibility: visible;
+}
+
+.drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity var(--transition-gentle);
+}
+
+.cart-drawer.open .drawer-backdrop {
+  opacity: 1;
+}
+
+.drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  background-color: var(--bg-pure-white);
+  border-left: 1px solid var(--line-delicate);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform var(--transition-gentle);
+  z-index: 10;
+}
+
+.cart-drawer.open .drawer-panel {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--line-delicate);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawer-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.drawer-close {
+  background: transparent;
+  border: none;
+  font-size: 1.35rem;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: color var(--transition-gentle);
+}
+
+.drawer-close:hover {
+  color: var(--ink-primary);
+}
+
+.drawer-body {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.empty-bag-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  font-size: 1.45rem;
+  color: var(--ink-subtle);
+}
+
+.cart-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line-delicate);
+}
+
+.cart-item-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 4px;
+}
+
+.cart-item-type {
+  font-size: 1.2rem;
+  color: var(--ink-subtle);
+}
+
+.cart-item-remove {
+  background: transparent;
+  border: none;
+  font-size: 1.15rem;
+  color: var(--ink-faint);
+  cursor: pointer;
+  margin-top: 6px;
+  display: block;
+}
+
+.cart-item-remove:hover {
+  color: var(--ink-primary);
+}
+
+.cart-item-price-val {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.drawer-footer {
+  padding: 32px;
+  border-top: 1px solid var(--line-delicate);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.drawer-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.drawer-checkout-btn {
+  background: var(--ink-primary);
+  color: #FFFFFF;
+  border: 1px solid var(--ink-primary);
+  padding: 14px 20px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-gentle);
+}
+
+.drawer-checkout-btn:not(:disabled):hover {
+  background: #FFFFFF;
+  color: var(--ink-primary);
+}
+
+.drawer-checkout-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .craft-dual-centered {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .centered-studios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+  .main-nav {
+    display: none;
+  }
+  .centered-stanza {
+    width: 95% !important;
+  }
+  .centered-studios-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom-centered {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+/* Reduced Motion Preference Compliance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

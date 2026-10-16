@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaffa Studios — The Poetry of Extraction</title>
+  <meta name="description" content="A minimalist exploration of single origin coffee, ceramic arts, and the quiet stillness of morning extraction.">
+  
+  <!-- Fonts: Playwrite CA for editorial body, Caveat for navigation and menu items -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Playwrite+CA:wght@100..400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="theme-white">
+
+  <!-- Minimalist Header (Menu in Caveat font) -->
+  <header id="site-header" class="site-header menu-font" role="banner">
+    <div class="header-inner">
+      <div class="header-brand">
+        <a href="#hero-track" class="brand-link" id="brand-logo">Kaffa Studios</a>
+      </div>
+
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <a href="#hero-track" class="nav-link">The Ritual</a>
+        <a href="#manifesto" class="nav-link">Philosophy</a>
+        <a href="#grinds-study" class="nav-link">The Grind</a>
+        <a href="#botanical-study" class="nav-link">Terroir</a>
+        <a href="#craft-studies" class="nav-link">Studies</a>
+        <a href="#menu-archive" class="nav-link">Menu Archive</a>
+        <a href="#ateliers" class="nav-link">Ateliers</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="cart-toggle-btn" class="bag-toggle-btn" aria-label="View shopping bag">
+          Bag <span id="bag-count-badge">(0)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO SECTION: Scroll-Driven Background Canvas with Centered Stanzas -->
+    <section id="hero-track" class="hero-track" aria-label="The Cappuccino Sequence">
+      <div class="hero-sticky-stage" id="hero-sticky-stage">
+        
+        <!-- Background Hero Canvas (192 frames) -->
+        <div class="hero-canvas-wrap">
+          <canvas id="hero-canvas" class="hero-canvas" aria-label="Coffee extraction and kinetic animation"></canvas>
+        </div>
+
+        <!-- Center-Oriented Floating Stanzas (Refined smaller text, anti-card) -->
+        <div class="story-stream">
+          
+          <!-- Stanza 1 -->
+          <div class="story-stanza centered-stanza active" id="stanza-1">
+            <span class="stanza-tag">The First Pour</span>
+            <h1 class="stanza-headline">The Architecture of White Porcelain</h1>
+            <p class="stanza-prose">
+              Pristine ceramic warmth holding a double extraction of wild Ethiopian heirloom beans at ninety-three point four degrees. Velvety microfoam resting with quiet surface tension, balancing sweetness and the gentle stillness of dawn.
+            </p>
+          </div>
+
+          <!-- Stanza 2 -->
+          <div class="story-stanza centered-stanza" id="stanza-2">
+            <span class="stanza-tag">Ascending Convection</span>
+            <h2 class="stanza-headline">The Orbit of Wild Arabica</h2>
+            <p class="stanza-prose">
+              As heat rises, roasted beans detach into mid-air orbit. Volatile organic compounds awaken into the morning light, releasing delicate notes of bergamot, sweet jasmine blossom, and dark stone fruit.
+            </p>
+          </div>
+
+          <!-- Stanza 3 -->
+          <div class="story-stanza centered-stanza" id="stanza-3">
+            <span class="stanza-tag">Lamination & Steam</span>
+            <h2 class="stanza-headline">Twenty-Seven Folds of Cultured Butter</h2>
+            <p class="stanza-prose">
+              Flaked French pastry proved across seventy-two hours enters the field alongside a surgical steel barista vessel. Silky steamed whole milk vortexes at one point four bar, folding golden espresso into liquid harmony.
+            </p>
+          </div>
+
+          <!-- Stanza 4 -->
+          <div class="story-stanza centered-stanza" id="stanza-4">
+            <span class="stanza-tag">Total Equilibrium</span>
+            <h2 class="stanza-headline">The Complete Morning Stillness</h2>
+            <p class="stanza-prose">
+              Ceylon cinnamon bark, whole roasted Arabica, crisp flaky crumbs, and gentle porcelain creamers in suspended harmony. No superfluous ornament remains; only the pure clarity of taste and negative space.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 1: CENTERED MANIFESTO -->
+    <section id="manifesto" class="section-center-text">
+      <div class="center-container">
+        
+        <span class="section-kicker">A Quiet Philosophy</span>
+        
+        <h2 class="centered-statement">
+          Every single drop is a quiet conversation between volcanic soil, mountain rainfall, and the patience of the morning hand.
+        </h2>
+
+        <div class="centered-prose-block">
+          <p class="centered-prose">
+            We reject the frantic speed of modern coffee culture, artificial syrups, and decorative clutter that masks inferior harvests. In our studios in Milan, Kyoto, Zurich, and Copenhagen, extraction is treated as an architectural practice of reduction.
+          </p>
+          <p class="centered-prose">
+            By stripping away commercial fillers, we allow the geological identity of the altitude to emerge unvarnished. When hot spring water meets freshly milled Arabica at ninety-three degrees, thousands of volatile aromatics dissolve into a balanced golden stream. It is a moment of pure focus, demanding nothing more than presence.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE DISPERSION OF THE GRIND (Panoramic Canvas Study) -->
+    <section id="grinds-study" class="section-grinds">
+      <div class="center-container">
+        
+        <div class="centered-intro">
+          <span class="section-kicker">Study One — Particle Kinetics</span>
+          <h2 class="centered-title">The Organic Wave of Freshly Milled Espresso</h2>
+          <p class="centered-desc">
+            Move your cursor across this canvas to disperse the fine aromatic particles. Cast-iron flat burrs create a unimodal particle curve where each grain measures between two hundred and two hundred and forty microns.
+          </p>
+        </div>
+
+        <div class="grinds-canvas-box">
+          <canvas id="grounds-canvas" class="study-canvas" aria-label="Interactive canvas showing coffee grounds wave"></canvas>
+        </div>
+
+        <div class="centered-metrics-row">
+          <span>Unimodal Burr Calibration: 220 Microns</span>
+          <span class="dot-sep">•</span>
+          <span>Surface Area Contact: 14.8 m²/g</span>
+          <span class="dot-sep">•</span>
+          <span>Extraction Window: 28 Seconds</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: LIVING BOTANICAL TERROIR (Canvas Study) -->
+    <section id="botanical-study" class="section-botanical">
+      <div class="center-container">
+        
+        <div class="centered-intro">
+          <span class="section-kicker">Study Two — Botanical Terroir</span>
+          <h2 class="centered-title">The Crimson Cherry & The Jasmine Blossom</h2>
+          <p class="centered-desc">
+            Before the roaster and the porcelain cup, coffee is a delicate flowering shrub native to the cloud forests of Southwestern Ethiopia. The white blossoms carry an intoxicating floral aroma almost identical to jasmine, blooming only for forty-eight hours after spring rains.
+          </p>
+        </div>
+
+        <div class="botanical-canvas-box">
+          <canvas id="branch-canvas" class="study-canvas" aria-label="Interactive canvas showing coffee branch with cherries and blossoms"></canvas>
+        </div>
+
+        <div class="centered-prose-block">
+          <p class="centered-prose">
+            Each cherry takes nine months to ripen to a deep crimson wine color at two thousand two hundred meters above sea level. This extreme elevation slows maturation, concentrating complex organic acids, sucrose, and minerals within the dense seed.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE BEAN SPIRAL & ROAST PROFILE -->
+    <section id="beans-study" class="section-beans">
+      <div class="center-container">
+        
+        <div class="centered-intro">
+          <span class="section-kicker">Study Three — Cast-Iron Roasting</span>
+          <h2 class="centered-title">The Spiral of Slow Thermal Development</h2>
+          <p class="centered-desc">
+            Roasting is the delicate art of controlled thermal transformation. On our vintage cast-iron drum roasters, we follow a Nordic light development curve ending shortly after the first crack at an Agtron color value of seventy-two.
+          </p>
+        </div>
+
+        <div class="beans-canvas-box">
+          <canvas id="beans-canvas" class="study-canvas" aria-label="Interactive canvas showing spiral of roasted beans"></canvas>
+        </div>
+
+        <div class="centered-prose-block">
+          <p class="centered-prose">
+            This restrained approach avoids smoky, bitter carbonization, allowing the delicate volatile fruit esters and citric brilliance of the terroir to sing unhindered. Move your cursor over the spiral to cast gentle warmth across the beans.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: CRAFT STUDIES — STEAM & LAMINATION -->
+    <section id="craft-studies" class="section-craft">
+      <div class="center-container">
+        
+        <div class="craft-dual-centered">
+          
+          <!-- Study A: The Dripper -->
+          <div class="craft-item-centered">
+            <div class="craft-canvas-frame">
+              <canvas id="dripper-canvas" class="study-canvas" aria-label="Interactive canvas showing porcelain dripper with rising steam"></canvas>
+            </div>
+            <div class="craft-text-centered">
+              <span class="section-kicker">Study Four</span>
+              <h3 class="craft-title">The Slow Porcelain Dripper & Rising Steam</h3>
+              <p class="craft-desc">
+                Hand-cast stoneware with subtle spiral ribs promoting laminar water descent. Gentle procedural steam drifts upward into the quiet air.
+              </p>
+            </div>
+          </div>
+
+          <!-- Study B: The Croissant -->
+          <div class="craft-item-centered">
+            <div class="craft-canvas-frame">
+              <canvas id="croissant-canvas" class="study-canvas" aria-label="Interactive canvas showing flaky croissant"></canvas>
+            </div>
+            <div class="craft-text-centered">
+              <span class="section-kicker">Study Five</span>
+              <h3 class="craft-title">The Honeycomb Lamination</h3>
+              <p class="craft-desc">
+                Twenty-seven folds of cultured Normandy butter proved over seventy-two hours. Brittle outer crust yielding to a tender honeycomb interior.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: THE OVERHEAD LATTE BLOOM -->
+    <section id="latte-study" class="section-latte">
+      <div class="center-container">
+        
+        <div class="centered-intro">
+          <span class="section-kicker">Study Six — The Surface Tension</span>
+          <h2 class="centered-title">The Concentric Petals of Microfoam</h2>
+          <p class="centered-desc">
+            When whole milk is textured with dry steam at one hundred and twenty-eight degrees, natural lactose sugars caramelize to peak sweetness at sixty-two degrees. Click anywhere on the ceramic cup below to send a gentle concentric wave through the velvety microfoam.
+          </p>
+        </div>
+
+        <div class="latte-canvas-box">
+          <canvas id="latte-canvas" class="study-canvas" aria-label="Interactive overhead canvas showing tulip latte art with wave ripples"></canvas>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: THE MENU ARCHIVE (With Images for Every Item & Menu Text in CAVEAT font) -->
+    <section id="menu-archive" class="section-menu-archive menu-font">
+      <div class="center-container">
+        
+        <div class="menu-header-centered">
+          <span class="menu-kicker">Seasonal Harvests & Objects</span>
+          <h2 class="menu-main-title">The Atelier Menu</h2>
+          <p class="menu-intro-text">
+            Small-batch single origin microlots roasted on cast-iron drums and unglazed porcelain objects. Sourced directly through multi-year grower partnerships.
+          </p>
+        </div>
+
+        <!-- Centered Menu Items with Product Images (Anti-Card, Pure Editorial Flow) -->
+        <div class="menu-items-flow">
+          
+          <!-- Menu Item 1 -->
+          <div class="menu-item-entry">
+            <div class="menu-item-visual">
+              <img src="./assets/item_ethiopia.jpg" alt="Guji Hambela Alaka coffee bag" class="menu-item-img">
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-name">Guji Hambela Alaka</h3>
+              <span class="menu-item-origin">Ethiopia • High Elevation Washed Heirloom • 2,180m</span>
+              <p class="menu-item-notes">Delicate jasmine blossom, bergamot tea, and sweet white peach with sparkling malic acidity.</p>
+              <div class="menu-item-action-row">
+                <span class="menu-item-price">$24.00</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="lot-01" data-name="Guji Hambela Alaka" data-price="24.00" data-type="250g Whole Bean">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Item 2 -->
+          <div class="menu-item-entry">
+            <div class="menu-item-visual">
+              <img src="./assets/item_colombia.jpg" alt="Finca El Paraiso Thermal canister" class="menu-item-img">
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-name">Finca El Paraiso Thermal</h3>
+              <span class="menu-item-origin">Colombia • Thermal Shock Anaerobic • 1,950m</span>
+              <p class="menu-item-notes">Aromatic lychee fruit, wild rose water, sweet raspberry coulis, and lingering vanilla cane sugar.</p>
+              <div class="menu-item-action-row">
+                <span class="menu-item-price">$32.00</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="lot-02" data-name="Finca El Paraiso Thermal" data-price="32.00" data-type="250g Whole Bean">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Item 3 -->
+          <div class="menu-item-entry">
+            <div class="menu-item-visual">
+              <img src="./assets/item_panama.jpg" alt="Panama Geisha Reserve box" class="menu-item-img">
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-name">Geisha Especial Hacienda</h3>
+              <span class="menu-item-origin">Panama Boquete • Slow Natural Sun-Dried • 1,850m</span>
+              <p class="menu-item-notes">Meyer lemon confit, orange blossom, wild lemongrass honey, and extraordinary silky tea finish.</p>
+              <div class="menu-item-action-row">
+                <span class="menu-item-price">$48.00</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="lot-03" data-name="Geisha Especial Hacienda" data-price="48.00" data-type="150g Reserve">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Item 4 -->
+          <div class="menu-item-entry">
+            <div class="menu-item-visual">
+              <img src="./assets/item_cup.jpg" alt="Mono Matte Porcelain Cup and Saucer" class="menu-item-img">
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-name">Mono Matte Porcelain Cup & Saucer</h3>
+              <span class="menu-item-origin">Handmade Ceramic Object • One Hundred and Eighty Milliliters</span>
+              <p class="menu-item-notes">Cast from raw unglazed feldspar porcelain with a silky glazed inner bowl and six millimeter thermal retention rim.</p>
+              <div class="menu-item-action-row">
+                <span class="menu-item-price">$38.00</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="obj-01" data-name="Mono Matte Porcelain Cup & Saucer" data-price="38.00" data-type="Set of 1">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Item 5 -->
+          <div class="menu-item-entry">
+            <div class="menu-item-visual">
+              <img src="./assets/item_pitcher.jpg" alt="Precision Barista Milk Pitcher" class="menu-item-img">
+            </div>
+            <div class="menu-item-content">
+              <h3 class="menu-item-name">Precision Barista Milk Pitcher</h3>
+              <span class="menu-item-origin">Machined Surgical Stainless Steel • Three Hundred and Fifty Milliliters</span>
+              <p class="menu-item-notes">Heavy gauge three hundred and four brushed steel with laser-aligned pour spout for symmetrical latte art pouring.</p>
+              <div class="menu-item-action-row">
+                <span class="menu-item-price">$48.00</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="obj-02" data-name="Precision Barista Milk Pitcher" data-price="48.00" data-type="Hardware">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 8: GLOBAL ATELIERS (Centered Layout) -->
+    <section id="ateliers" class="section-ateliers">
+      <div class="center-container">
+        
+        <div class="centered-intro">
+          <span class="section-kicker">Flagship Spaces</span>
+          <h2 class="centered-title">Sanctuaries of Light, Stone & Stillness</h2>
+        </div>
+
+        <div class="centered-studios-grid">
+          
+          <div class="studio-center-block">
+            <h3 class="studio-city">Milano</h3>
+            <p class="studio-desc">Via Brera fourteen in the historical design district. Natural travertine stone counters and slow pour-over bars bathed in morning light.</p>
+            <span class="studio-time">Open morning to late afternoon</span>
+          </div>
+
+          <div class="studio-center-block">
+            <h3 class="studio-city">Kyoto</h3>
+            <p class="studio-desc">Along the Kamogawa river in Nakagyo Ward. Japanese cedar woodwork, tatami tea corners, and acoustic stillness.</p>
+            <span class="studio-time">Open sunrise to dusk</span>
+          </div>
+
+          <div class="studio-center-block">
+            <h3 class="studio-city">Zurich</h3>
+            <p class="studio-desc">Augustinergasse twelve in the Old Town. Minimalist lime plaster walls, filtered Alpine spring water, and single origin flights.</p>
+            <span class="studio-time">Open early morning to afternoon</span>
+          </div>
+
+          <div class="studio-center-block">
+            <h3 class="studio-city">Copenhagen</h3>
+            <p class="studio-desc">Jaegersborggade forty-one in Noerrebro. Nordic Douglas fir tables, sourdough brioche pairings, and seasonal filter lots.</p>
+            <span class="studio-time">Open morning to late afternoon</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CENTERED EDITORIAL FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="center-container">
+      
+      <div class="footer-center-flow">
+        <span class="footer-brand-title">Kaffa Studios</span>
+        <p class="footer-manifesto-text">
+          A continuous sensory inquiry into the architecture of coffee extraction, tactile ceramics, and the beauty of negative space. Designed with restraint, quietude, and single origin terroir.
+        </p>
+
+        <div class="footer-dispatch-centered">
+          <span class="dispatch-header">The Seasonal Dispatch</span>
+          <p class="dispatch-subtext">Receive quiet notes on new harvest lots and limited ceramic releases.</p>
+          <form id="newsletter-form" class="dispatch-form-centered" action="#" method="POST" onsubmit="event.preventDefault(); window.handleNewsletter();">
+            <label for="newsletter-input" class="sr-only">Email address</label>
+            <input type="email" id="newsletter-input" placeholder="Your email address" required class="dispatch-input-centered">
+            <button type="submit" class="dispatch-btn-centered">Subscribe</button>
+          </form>
+          <span id="newsletter-feedback" class="dispatch-msg"></span>
+        </div>
+      </div>
+
+      <div class="footer-bottom-centered">
+        <span>Composed with love and restraint in pure white space.</span>
+        <button id="back-to-top-btn" class="top-anchor-btn">Back to top</button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SLIDE-OVER BAG DRAWER (In Caveat font, anti-card) -->
+  <aside id="cart-drawer" class="cart-drawer menu-font" aria-hidden="true" role="dialog" aria-labelledby="cart-title">
+    <div class="drawer-backdrop" id="cart-backdrop"></div>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2 id="cart-title" class="drawer-title">Your Bag</h2>
+        <button id="cart-close-btn" class="drawer-close" aria-label="Close bag drawer">Close</button>
+      </div>
+
+      <div class="drawer-body" id="cart-items-container">
+        <div class="empty-bag-notice" id="empty-cart-message">
+          <p>Your bag is currently empty.</p>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <div class="drawer-total-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal-display">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="drawer-checkout-btn" disabled>
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="./app.js"></script>
+</body>
+</html>
