@@ -916,13 +916,17 @@
   }
 
   function initCart() {
-    document.querySelectorAll('.add-to-bag-trigger').forEach((btn) => {
-      btn.addEventListener('click', () => {
+    // Event delegation: capture clicks from any add-to-bag-trigger across the practical menu
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.add-to-bag-trigger');
+      if (btn) {
         const name = btn.getAttribute('data-name');
         const price = parseFloat(btn.getAttribute('data-price'));
         const type = btn.getAttribute('data-type');
-        addToCart(name, price, type);
-      });
+        if (name && !isNaN(price)) {
+          addToCart(name, price, type || 'Café Item');
+        }
+      }
     });
 
     cartToggleBtn.addEventListener('click', openCart);
@@ -947,7 +951,8 @@
   }
 
   // ==========================================================================
-  // 9. Newsletter Handler & Navigation Spy
+  // ==========================================================================
+  // 9. Newsletter Handler, Hero Features & Navigation Spy
   // ==========================================================================
   window.handleNewsletter = function () {
     const input = document.getElementById('newsletter-input');
@@ -957,6 +962,325 @@
       input.value = '';
     }
   };
+
+  function initHeroFeatures() {
+    // 1. Photo Perspective Switcher (Atelier Sanctuary vs Morning Spread)
+    const perspectiveTabs = document.querySelectorAll('.perspective-tab');
+    const photoPanes = document.querySelectorAll('.hero-photo-pane');
+
+    perspectiveTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        perspectiveTabs.forEach((t) => {
+          const isActive = t === tab;
+          t.classList.toggle('active', isActive);
+          t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        photoPanes.forEach((pane) => {
+          const isTarget = pane.id === targetId;
+          pane.classList.toggle('active', isTarget);
+        });
+      });
+    });
+
+    // 2. Obvious Action: View Menu CTA Smooth Scroll
+    const heroMenuBtn = document.getElementById('hero-cta-menu');
+    if (heroMenuBtn) {
+      heroMenuBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const menuSec = document.getElementById('menu-archive');
+        if (menuSec) {
+          const headerOffset = 68;
+          const offsetPosition = menuSec.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    }
+
+    // 3. Scroll to Ritual sequence
+    const ritualScrollBtn = document.getElementById('scroll-to-ritual-btn');
+    if (ritualScrollBtn) {
+      ritualScrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const ritualSec = document.getElementById('hero-track');
+        if (ritualSec) {
+          const headerOffset = 68;
+          const offsetPosition = ritualSec.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    }
+
+    // 4. Obvious Action: Get Directions Modal
+    const directionsModal = document.getElementById('directions-modal');
+    const directionsBackdrop = document.getElementById('directions-backdrop');
+    const directionsCloseBtn = document.getElementById('directions-close-btn');
+    const heroDirectionsBtn = document.getElementById('hero-cta-directions');
+    const headerDirectionsBtn = document.getElementById('header-directions-btn');
+    const copyToast = document.getElementById('copy-toast');
+    const cityTabs = document.querySelectorAll('.city-tab-btn');
+    const cityPanels = document.querySelectorAll('.city-detail-panel');
+    const copyButtons = document.querySelectorAll('.city-btn-copy');
+    const modalJumpAteliers = document.getElementById('modal-jump-ateliers');
+
+    function openDirectionsModal() {
+      if (!directionsModal) return;
+      directionsModal.classList.add('open');
+      directionsModal.setAttribute('aria-hidden', 'false');
+      if (heroDirectionsBtn) heroDirectionsBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDirectionsModal() {
+      if (!directionsModal) return;
+      directionsModal.classList.remove('open');
+      directionsModal.setAttribute('aria-hidden', 'true');
+      if (heroDirectionsBtn) heroDirectionsBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    if (heroDirectionsBtn) heroDirectionsBtn.addEventListener('click', openDirectionsModal);
+    if (headerDirectionsBtn) headerDirectionsBtn.addEventListener('click', openDirectionsModal);
+    if (directionsCloseBtn) directionsCloseBtn.addEventListener('click', closeDirectionsModal);
+    if (directionsBackdrop) directionsBackdrop.addEventListener('click', closeDirectionsModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && directionsModal && directionsModal.classList.contains('open')) {
+        closeDirectionsModal();
+      }
+    });
+
+    cityTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const city = tab.getAttribute('data-city');
+        cityTabs.forEach((t) => {
+          const isActive = t === tab;
+          t.classList.toggle('active', isActive);
+          t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        cityPanels.forEach((panel) => {
+          panel.classList.toggle('active', panel.id === `panel-${city}`);
+        });
+      });
+    });
+
+    let toastTimeout = null;
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.city-btn-copy');
+      if (btn) {
+        const addr = btn.getAttribute('data-address');
+        if (!addr) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(addr).then(() => {
+            showCopyFeedback('Address copied to clipboard!');
+          }).catch(() => {
+            fallbackCopy(addr);
+          });
+        } else {
+          fallbackCopy(addr);
+        }
+      }
+    });
+
+    function fallbackCopy(text) {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      temp.style.position = 'fixed';
+      temp.style.opacity = '0';
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        document.execCommand('copy');
+        showCopyFeedback('Address copied to clipboard!');
+      } catch (err) {
+        showCopyFeedback('Press Ctrl+C to copy: ' + text);
+      }
+      document.body.removeChild(temp);
+    }
+
+    function showCopyFeedback(msg) {
+      if (!copyToast) return;
+      copyToast.textContent = msg;
+      copyToast.style.opacity = '1';
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        copyToast.style.opacity = '0';
+      }, 2500);
+    }
+
+    if (modalJumpAteliers) {
+      modalJumpAteliers.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeDirectionsModal();
+        const ateliersSec = document.getElementById('ateliers');
+        if (ateliersSec) {
+          const headerOffset = 68;
+          const offsetPosition = ateliersSec.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    }
+  }
+
+  // ==========================================================================
+  // Practical Menu Filtering, Search & Dietary Transparency System
+  // ==========================================================================
+  function initMenuFilters() {
+    const categoryBtns = document.querySelectorAll('.menu-navigation-bar .menu-nav-btn');
+    const dietPills = document.querySelectorAll('.dietary-filter-group .diet-filter-pill');
+    const searchInput = document.getElementById('menu-search-input');
+    const searchClearBtn = document.getElementById('menu-search-clear');
+    const visibleCountEl = document.getElementById('visible-count');
+    const noResultsEl = document.getElementById('menu-no-results');
+    const resetBtn = document.getElementById('reset-menu-filters-btn');
+    const menuCards = document.querySelectorAll('#menu-items-grid .menu-card');
+
+    if (!menuCards.length) return;
+
+    let activeCategory = 'all';
+    let activeDiet = 'all';
+    let searchQuery = '';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      menuCards.forEach((card) => {
+        const cardCategory = card.getAttribute('data-category') || '';
+        const cardDiets = (card.getAttribute('data-diets') || '').toLowerCase();
+        const cardName = (card.getAttribute('data-name') || '').toLowerCase();
+        const cardOrigin = (card.querySelector('.menu-card-origin')?.textContent || '').toLowerCase();
+        const cardDesc = (card.querySelector('.menu-card-desc')?.textContent || '').toLowerCase();
+        const cardTitle = (card.querySelector('.menu-card-title')?.textContent || '').toLowerCase();
+        const cardBadges = (card.querySelector('.card-dietary-row')?.textContent || '').toLowerCase();
+
+        // 1. Category Filter Matching
+        const matchCategory = (activeCategory === 'all' || cardCategory === activeCategory);
+
+        // 2. Dietary Filter Matching
+        let matchDiet = false;
+        if (activeDiet === 'all') {
+          matchDiet = true;
+        } else if (activeDiet === 'vegan') {
+          matchDiet = cardDiets.includes('vegan');
+        } else if (activeDiet === 'vegetarian') {
+          // Plant-based / vegan items are also inherently vegetarian
+          matchDiet = cardDiets.includes('vegetarian') || cardDiets.includes('vegan');
+        } else if (activeDiet === 'gluten-free') {
+          matchDiet = cardDiets.includes('gluten-free');
+        } else if (activeDiet === 'nut-free') {
+          matchDiet = cardDiets.includes('nut-free');
+        }
+
+        // 3. Search Query Matching (Name, Notes, Origin, Dietary Tags)
+        let matchSearch = true;
+        if (searchQuery) {
+          const haystack = `${cardName} ${cardTitle} ${cardOrigin} ${cardDesc} ${cardBadges}`;
+          matchSearch = haystack.includes(searchQuery);
+        }
+
+        // Apply visibility
+        if (matchCategory && matchDiet && matchSearch) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update active counter
+      if (visibleCountEl) {
+        visibleCountEl.textContent = visibleCount;
+      }
+
+      // Display empty state notice if no items match
+      if (noResultsEl) {
+        noResultsEl.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+
+      // Toggle search clear button visibility
+      if (searchClearBtn) {
+        searchClearBtn.style.opacity = searchQuery ? '1' : '0.3';
+        searchClearBtn.style.pointerEvents = searchQuery ? 'auto' : 'none';
+      }
+    }
+
+    // Category button click events
+    categoryBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.getAttribute('data-category') || 'all';
+        categoryBtns.forEach((b) => {
+          const isActive = b === btn;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        applyFilters();
+      });
+    });
+
+    // Dietary pill click events
+    dietPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        activeDiet = pill.getAttribute('data-diet') || 'all';
+        dietPills.forEach((p) => {
+          p.classList.toggle('active', p === pill);
+        });
+        applyFilters();
+      });
+    });
+
+    // Live search input events
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        searchQuery = searchInput.value.trim().toLowerCase();
+        applyFilters();
+      });
+
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          searchInput.value = '';
+          searchQuery = '';
+          applyFilters();
+        }
+      });
+    }
+
+    if (searchClearBtn) {
+      searchClearBtn.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+          searchQuery = '';
+          applyFilters();
+          searchInput.focus();
+        }
+      });
+    }
+
+    // Reset filters handler
+    function resetAllFilters() {
+      activeCategory = 'all';
+      activeDiet = 'all';
+      searchQuery = '';
+
+      if (searchInput) searchInput.value = '';
+
+      categoryBtns.forEach((b) => {
+        const isAll = b.getAttribute('data-category') === 'all';
+        b.classList.toggle('active', isAll);
+        b.setAttribute('aria-selected', isAll ? 'true' : 'false');
+      });
+
+      dietPills.forEach((p) => {
+        const isAll = p.getAttribute('data-diet') === 'all';
+        p.classList.toggle('active', isAll);
+      });
+
+      applyFilters();
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', resetAllFilters);
+    }
+  }
 
   function initNavigationSpy() {
     const navLinks = document.querySelectorAll('.main-nav .nav-link');
@@ -1008,7 +1332,25 @@
       brandLogo.addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        setActiveLink('hero-track');
+        setActiveLink('hero');
+      });
+    }
+
+    // Header Quick Action "Menu" button smooth scroll
+    const headerMenuLink = document.querySelector('.header-menu-link');
+    if (headerMenuLink) {
+      headerMenuLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetSection = document.getElementById('menu-archive');
+        if (targetSection) {
+          const headerOffset = 68;
+          const elementPosition = targetSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
       });
     }
 
@@ -1016,13 +1358,13 @@
     let scrollTimeout = null;
     function onScrollSpy() {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollY < 160) {
-        setActiveLink('hero-track');
+      if (scrollY < 180) {
+        setActiveLink('hero');
         return;
       }
 
       const viewportOffset = scrollY + window.innerHeight * 0.35;
-      let activeId = 'hero-track';
+      let activeId = 'hero';
 
       for (let i = 0; i < sections.length; i++) {
         const sec = sections[i];
@@ -1049,6 +1391,299 @@
     onScrollSpy();
   }
 
+  // ==========================================================================
+  // Real-Time Local Atelier Status (Open / Closed Hours)
+  // ==========================================================================
+  function initLiveStatus() {
+    const statusPills = document.querySelectorAll('.live-status-pill');
+    const heroEyebrowStatus = document.getElementById('hero-eyebrow-status');
+
+    const citySchedules = {
+      milan: {
+        name: 'Milano',
+        timeZone: 'Europe/Rome',
+        check: (day, hour, min) => {
+          const totalMin = hour * 60 + min;
+          const isWeekend = (day === 0 || day === 6);
+          const openMin = isWeekend ? 8 * 60 : 7 * 60;
+          const closeMin = isWeekend ? 19 * 60 : 18 * 60;
+          const isOpen = totalMin >= openMin && totalMin < closeMin;
+          const closeStr = isWeekend ? '7:00 PM' : '6:00 PM';
+          const openStr = isWeekend ? '8:00 AM' : '7:00 AM';
+          return { isOpen, closeStr, openStr };
+        }
+      },
+      kyoto: {
+        name: 'Kyoto',
+        timeZone: 'Asia/Tokyo',
+        check: (day, hour, min) => {
+          const totalMin = hour * 60 + min;
+          if (day === 1) {
+            return { isOpen: false, isClosedToday: true, openStr: 'Tue 7:30 AM' };
+          }
+          const openMin = 7 * 60 + 30;
+          const closeMin = 17 * 60 + 30;
+          const isOpen = totalMin >= openMin && totalMin < closeMin;
+          return { isOpen, closeStr: '5:30 PM', openStr: '7:30 AM' };
+        }
+      },
+      zurich: {
+        name: 'Zürich',
+        timeZone: 'Europe/Zurich',
+        check: (day, hour, min) => {
+          const totalMin = hour * 60 + min;
+          if (day === 0) {
+            return { isOpen: false, isClosedToday: true, openStr: 'Mon 7:30 AM' };
+          }
+          const openMin = 7 * 60 + 30;
+          const closeMin = 17 * 60;
+          const isOpen = totalMin >= openMin && totalMin < closeMin;
+          return { isOpen, closeStr: '5:00 PM', openStr: '7:30 AM' };
+        }
+      },
+      copenhagen: {
+        name: 'København',
+        timeZone: 'Europe/Copenhagen',
+        check: (day, hour, min) => {
+          const totalMin = hour * 60 + min;
+          if (day === 1 || day === 2) {
+            return { isOpen: false, isClosedToday: true, openStr: 'Wed 8:00 AM' };
+          }
+          const openMin = 8 * 60;
+          const closeMin = 17 * 60 + 30;
+          const isOpen = totalMin >= openMin && totalMin < closeMin;
+          return { isOpen, closeStr: '5:30 PM', openStr: '8:00 AM' };
+        }
+      }
+    };
+
+    function updateStatus() {
+      const now = new Date();
+
+      statusPills.forEach((pill) => {
+        const cityKey = pill.getAttribute('data-city');
+        const config = citySchedules[cityKey];
+        if (!config) return;
+
+        try {
+          const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: config.timeZone,
+            weekday: 'short',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+          }).formatToParts(now);
+
+          let localHour = 0;
+          let localMin = 0;
+          let weekdayStr = '';
+
+          parts.forEach((p) => {
+            if (p.type === 'hour') localHour = parseInt(p.value, 10);
+            if (p.type === 'minute') localMin = parseInt(p.value, 10);
+            if (p.type === 'weekday') weekdayStr = p.value;
+          });
+
+          const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+          const day = dayMap[weekdayStr] !== undefined ? dayMap[weekdayStr] : now.getDay();
+
+          const res = config.check(day, localHour, localMin);
+          const textSpan = pill.querySelector('.status-text') || pill;
+
+          if (res.isOpen) {
+            pill.classList.add('status-open');
+            pill.classList.remove('status-closed');
+            textSpan.textContent = `Open Now • Closes ${res.closeStr}`;
+          } else {
+            pill.classList.add('status-closed');
+            pill.classList.remove('status-open');
+            if (res.isClosedToday) {
+              textSpan.textContent = `Closed Today • Opens ${res.openStr}`;
+            } else {
+              textSpan.textContent = `Closed • Opens at ${res.openStr}`;
+            }
+          }
+
+          if (cityKey === 'milan' && heroEyebrowStatus) {
+            if (res.isOpen) {
+              heroEyebrowStatus.textContent = `Open Now until ${res.closeStr} • Flagship Atelier: Via Brera 14, Milan`;
+            } else {
+              heroEyebrowStatus.textContent = `Closed • Opens tomorrow at ${res.openStr} • Flagship Atelier: Via Brera 14, Milan`;
+            }
+          }
+        } catch (err) {
+          const textSpan = pill.querySelector('.status-text') || pill;
+          textSpan.textContent = 'Open Today 7:00 AM – 6:00 PM';
+        }
+      });
+    }
+
+    updateStatus();
+    setInterval(updateStatus, 60000);
+  }
+
+  // ==========================================================================
+  // Atelier Location Filter Tabs
+  // ==========================================================================
+  function initAtelierTabs() {
+    const tabBtns = document.querySelectorAll('.atelier-tab-btn');
+    const atelierCards = document.querySelectorAll('.ateliers-comprehensive-grid .atelier-card');
+
+    if (!tabBtns.length || !atelierCards.length) return;
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetCity = btn.getAttribute('data-target-city');
+        tabBtns.forEach((b) => {
+          const isActive = b === btn;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        atelierCards.forEach((card) => {
+          const cardCity = card.getAttribute('data-city');
+          if (targetCity === 'all' || cardCity === targetCity) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // ==========================================================================
+  // Interactive Reservation System (Cupping Workshops & Tasting Sessions)
+  // ==========================================================================
+  function initReservationModal() {
+    const resModal = document.getElementById('reservation-modal');
+    const resBackdrop = document.getElementById('reservation-backdrop');
+    const resCloseBtn = document.getElementById('reservation-close-btn');
+    const resForm = document.getElementById('reservation-form');
+    const resConf = document.getElementById('reservation-confirmation');
+    const resConfCloseBtn = document.getElementById('res-conf-close-btn');
+    const citySelect = document.getElementById('res-city');
+    const dateInput = document.getElementById('res-date');
+    const heroReserveBtn = document.getElementById('hero-cta-reserve');
+    const headerReserveBtn = document.getElementById('header-reserve-btn');
+
+    if (dateInput) {
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = today.toISOString().split('T')[0];
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+    }
+
+    function openModal(preselectCity) {
+      if (!resModal) return;
+      if (preselectCity && citySelect) {
+        citySelect.value = preselectCity;
+      }
+      if (resForm) resForm.style.display = '';
+      if (resConf) resConf.style.display = 'none';
+
+      resModal.classList.add('open');
+      resModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      const firstInput = resForm ? resForm.querySelector('input, select') : null;
+      if (firstInput) setTimeout(() => firstInput.focus(), 100);
+    }
+
+    function closeModal() {
+      if (!resModal) return;
+      resModal.classList.remove('open');
+      resModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    if (resCloseBtn) resCloseBtn.addEventListener('click', closeModal);
+    if (resBackdrop) resBackdrop.addEventListener('click', closeModal);
+    if (resConfCloseBtn) resConfCloseBtn.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && resModal && resModal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    if (headerReserveBtn) {
+      headerReserveBtn.addEventListener('click', () => openModal('milan'));
+    }
+    if (heroReserveBtn) {
+      heroReserveBtn.addEventListener('click', () => openModal('milan'));
+    }
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.atelier-reserve-trigger');
+      if (trigger) {
+        e.preventDefault();
+        const city = trigger.getAttribute('data-city') || 'milan';
+        openModal(city);
+      }
+    });
+
+    if (resForm) {
+      resForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('res-name');
+        const emailInput = document.getElementById('res-email');
+        const phoneInput = document.getElementById('res-phone');
+        const expSelect = document.getElementById('res-experience');
+        const timeSelect = document.getElementById('res-time');
+        const guestsSelect = document.getElementById('res-guests');
+
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const phone = phoneInput ? phoneInput.value.trim() : '';
+        const cityVal = citySelect ? citySelect.value : 'milan';
+        const expText = expSelect ? expSelect.options[expSelect.selectedIndex].text.split('(')[0].trim() : 'Guided Tasting Flight';
+        const dateVal = dateInput ? dateInput.value : '';
+        const timeText = timeSelect ? timeSelect.options[timeSelect.selectedIndex].text.split('(')[0].trim() : '02:00 PM';
+        const guestsText = guestsSelect ? guestsSelect.options[guestsSelect.selectedIndex].text : '2 Guests';
+
+        if (!name || !email || !phone) {
+          alert('Please provide your name, email, and telephone number.');
+          return;
+        }
+
+        const atelierCityMap = {
+          milan: { name: 'Milano (Via Brera 14)', tel: '+39 02 8493 2140' },
+          kyoto: { name: 'Kyoto (Kamogawa Sanjo)', tel: '+81 75 254 8831' },
+          zurich: { name: 'Zürich (Augustinergasse 12)', tel: '+41 44 211 4050' },
+          copenhagen: { name: 'København (Jægersborggade 41)', tel: '+45 32 18 90 22' }
+        };
+
+        const cityInfo = atelierCityMap[cityVal] || atelierCityMap.milan;
+        const refCode = `#KAFFA-${cityVal.toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+        const confRef = document.getElementById('conf-ref-code');
+        const confAtelier = document.getElementById('conf-atelier-name');
+        const confExp = document.getElementById('conf-exp-name');
+        const confDatetime = document.getElementById('conf-datetime');
+        const confParty = document.getElementById('conf-party');
+        const confGuest = document.getElementById('conf-guest');
+        const confTelLink = document.getElementById('conf-tel-link');
+
+        if (confRef) confRef.textContent = refCode;
+        if (confAtelier) confAtelier.textContent = cityInfo.name;
+        if (confExp) confExp.textContent = expText;
+        if (confDatetime) confDatetime.textContent = `${dateVal} at ${timeText}`;
+        if (confParty) confParty.textContent = guestsText;
+        if (confGuest) confGuest.textContent = `${name} (${email} • ${phone})`;
+        if (confTelLink) {
+          confTelLink.textContent = cityInfo.tel;
+          confTelLink.href = `tel:${cityInfo.tel.replace(/\s+/g, '')}`;
+        }
+
+        resForm.style.display = 'none';
+        if (resConf) resConf.style.display = 'flex';
+      });
+    }
+  }
+
   function init() {
     window.addEventListener('resize', resizeHeroCanvas);
     resizeHeroCanvas();
@@ -1063,7 +1698,12 @@
     initLatteCanvas();
 
     initCart();
+    initHeroFeatures();
+    initMenuFilters();
     initNavigationSpy();
+    initLiveStatus();
+    initAtelierTabs();
+    initReservationModal();
   }
 
   if (document.readyState === 'loading') {

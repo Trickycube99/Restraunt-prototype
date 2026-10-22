@@ -19,11 +19,12 @@
   <header id="site-header" class="site-header menu-font" role="banner">
     <div class="header-inner">
       <div class="header-brand">
-        <a href="#hero-track" class="brand-link" id="brand-logo">Kaffa Studios</a>
+        <a href="#hero" class="brand-link" id="brand-logo">Kaffa Studios</a>
       </div>
 
       <nav class="main-nav" aria-label="Primary Navigation">
-        <a href="#hero-track" class="nav-link active">The Ritual</a>
+        <a href="#hero" class="nav-link active">The Café</a>
+        <a href="#hero-track" class="nav-link">The Ritual</a>
         <a href="#manifesto" class="nav-link">Philosophy</a>
         <a href="#grinds-study" class="nav-link">The Grind</a>
         <a href="#botanical-study" class="nav-link">Terroir</a>
@@ -33,6 +34,9 @@
       </nav>
 
       <div class="header-actions">
+        <a href="#menu-archive" class="header-quick-action header-menu-link">Menu</a>
+        <button type="button" class="header-quick-action header-directions-link" id="header-directions-btn">Directions</button>
+        <button type="button" class="header-quick-action header-reserve-btn" id="header-reserve-btn" aria-haspopup="dialog" aria-expanded="false">Book Cupping</button>
         <button id="cart-toggle-btn" class="bag-toggle-btn" aria-label="View shopping bag">
           <svg class="bag-icon" width="22" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -46,6 +50,185 @@
   </header>
 
   <main id="main-content">
+
+    <!-- =====================================================================
+         PRIORITY 1 HERO: MAKE THE FIRST SCREEN SELL THE CAFÉ
+         - Clear Café Name: Kaffa Studios
+         - Compelling Food or Interior Photograph (with Interactive View Switcher)
+         - Obvious Actions: "View Menu" and "Get Directions"
+         - Minimalist Aesthetic
+         ===================================================================== -->
+    <section id="hero" class="cafe-hero-section" aria-label="Welcome to Kaffa Studios Café & Roastery">
+      <div class="center-container">
+        
+        <!-- Header Kicker & Brand Title -->
+        <div class="hero-brand-block">
+          <div class="hero-eyebrow">
+            <span class="status-live-dot" aria-hidden="true"></span>
+            <span class="eyebrow-text">Open Today 7:00 AM – 6:00 PM • Flagship Atelier: Via Brera 14, Milan</span>
+          </div>
+
+          <h1 class="hero-cafe-name">Kaffa Studios</h1>
+
+          <p class="hero-cafe-tagline">
+            Specialty Single-Origin Roastery, Slow Extraction Bar & Fresh Viennoiserie
+          </p>
+
+          <p class="hero-cafe-prose">
+            An architectural sanctuary dedicated to the pure terroir of wild heirloom coffees, twenty-seven fold cultured butter croissants baked fresh at dawn, and quiet ceramic craftsmanship.
+          </p>
+        </div>
+
+        <!-- Obvious Hero Actions (Call-To-Actions) -->
+        <div class="hero-actions-container">
+          <a href="#menu-archive" class="hero-action-btn hero-action-btn-primary" id="hero-cta-menu" aria-label="View our cafe menu archive">
+            <div class="btn-main-row">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+              <span>View Menu</span>
+            </div>
+            <span class="btn-subtext">Seasonal Lots & Fresh Pastry</span>
+          </a>
+
+          <button type="button" class="hero-action-btn hero-action-btn-secondary" id="hero-cta-directions" aria-haspopup="dialog" aria-expanded="false" aria-label="Get directions to our cafes">
+            <div class="btn-main-row">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Get Directions</span>
+            </div>
+            <span class="btn-subtext">Milan • Kyoto • Zurich • CPH</span>
+          </button>
+
+          <button type="button" class="hero-action-btn hero-action-btn-tertiary" id="hero-cta-reserve" aria-haspopup="dialog" aria-expanded="false" aria-label="Book a private cupping or tasting workshop">
+            <div class="btn-main-row">
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Book Tasting</span>
+            </div>
+            <span class="btn-subtext">Private Cupping Workshops</span>
+          </button>
+        </div>
+
+        <!-- Quick Credentials / Terroir Info Strip -->
+        <div class="hero-credential-pills" role="list" aria-label="Café Highlights">
+          <div class="credential-pill" role="listitem">
+            <span class="pill-dot">✦</span>
+            <span>Single-Origin Washed Heirloom (93.4°C)</span>
+          </div>
+          <div class="credential-pill" role="listitem">
+            <span class="pill-dot">✦</span>
+            <span>72-Hour Proved Normandy Butter Brioche</span>
+          </div>
+          <div class="credential-pill" role="listitem">
+            <span class="pill-dot">✦</span>
+            <span>Hand-Thrown Feldspar Ceramic Service</span>
+          </div>
+        </div>
+
+        <!-- Compelling Food or Interior Photograph Frame with Perspective Switcher -->
+        <div class="hero-visual-showcase" id="hero-visual-showcase">
+          
+          <div class="visual-perspective-tabs" role="tablist" aria-label="Café photo perspective">
+            <button type="button" role="tab" aria-selected="true" class="perspective-tab active" id="tab-interior" data-target="photo-interior" aria-controls="photo-interior">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Atelier Sanctuary (Milan Flagship)</span>
+            </button>
+            <button type="button" role="tab" aria-selected="false" class="perspective-tab" id="tab-food" data-target="photo-food" aria-controls="photo-food">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+              </svg>
+              <span>Signature Coffee & Fresh Viennoiserie</span>
+            </button>
+          </div>
+
+          <div class="hero-stage-card">
+            
+            <!-- Perspective 1: Sunlit Atelier Interior -->
+            <figure class="hero-photo-pane active" id="photo-interior" role="tabpanel" aria-labelledby="tab-interior">
+              <div class="photo-img-wrapper">
+                <img 
+                  src="./assets/cafe_interior.jpg" 
+                  alt="Sunlit morning interior of Kaffa Studios café with travertine limestone bar, custom matte white espresso machine, fresh croissants, and peaceful window benches" 
+                  class="hero-showcase-img"
+                  width="1920" 
+                  height="1080"
+                  fetchpriority="high"
+                >
+                <div class="photo-floating-tag tag-top-left">
+                  <span class="tag-pulse"></span>
+                  <span>Via Brera 14, Milan • Morning Sunlight</span>
+                </div>
+                <div class="photo-floating-tag tag-bottom-right">
+                  <span>Travertine Bar & Cast-Iron Roastery</span>
+                </div>
+              </div>
+              <figcaption class="hero-showcase-caption">
+                <div class="caption-inner">
+                  <span class="caption-title">The Sanctuary of Light & Stone</span>
+                  <span class="caption-sub">Via Brera Flagship Atelier — natural Italian travertine, unglazed ceramic counters, and the quiet aroma of freshly milled wild Arabica.</span>
+                </div>
+              </figcaption>
+            </figure>
+
+            <!-- Perspective 2: Exquisite Food & Coffee Spread -->
+            <figure class="hero-photo-pane" id="photo-food" role="tabpanel" aria-labelledby="tab-food">
+              <div class="photo-img-wrapper">
+                <img 
+                  src="./assets/cafe_food.jpg" 
+                  alt="Artisanal morning breakfast spread at Kaffa Studios with tulip latte art cappuccino in handmade ceramic cup, freshly baked flaky butter croissant, and Chemex pour-over coffee" 
+                  class="hero-showcase-img"
+                  width="1920" 
+                  height="1080"
+                  loading="lazy"
+                >
+                <div class="photo-floating-tag tag-top-left">
+                  <span class="tag-pulse"></span>
+                  <span>Fresh Batch Sourced from Guji, Ethiopia</span>
+                </div>
+                <div class="photo-floating-tag tag-bottom-right">
+                  <span>Normandy Cultured Butter Croissant</span>
+                </div>
+              </div>
+              <figcaption class="hero-showcase-caption">
+                <div class="caption-inner">
+                  <span class="caption-title">The Morning Culinary Ritual</span>
+                  <span class="caption-sub">Slow-steamed velvety microfoam cappuccino paired with brittle seventy-two hour laminated viennoiserie and delicate amber filter notes.</span>
+                </div>
+              </figcaption>
+            </figure>
+
+          </div>
+
+        </div>
+
+        <!-- Invitation to Explore the Scroll Sequence -->
+        <div class="hero-scroll-prompt">
+          <a href="#hero-track" class="scroll-prompt-link" id="scroll-to-ritual-btn" aria-label="Scroll down to explore the extraction sequence">
+            <span class="scroll-prompt-text">Scroll to explore the Extraction Sequence</span>
+            <svg class="scroll-prompt-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
 
     <!-- HERO SECTION: Scroll-Driven Background Canvas with Centered Stanzas -->
     <section id="hero-track" class="hero-track" aria-label="The Cappuccino Sequence">
@@ -257,151 +440,1110 @@
       </div>
     </section>
 
-    <!-- SECTION 7: THE MENU ARCHIVE (With Images for Every Item & Menu Text in CAVEAT font) -->
-    <section id="menu-archive" class="section-menu-archive menu-font">
+    <!-- SECTION 7: PRACTICAL CAFÉ & ATELIER MENU (Actual Items, Prices, Dietary Details, Clear Navigation) -->
+    <section id="menu-archive" class="section-menu-archive menu-font" aria-label="Café and Atelier Menu">
       <div class="center-container">
         
         <div class="menu-header-centered">
-          <span class="menu-kicker">Seasonal Harvests & Objects</span>
-          <h2 class="menu-main-title">The Atelier Menu</h2>
+          <span class="menu-kicker">Daily Service & Seasonal Harvests</span>
+          <h2 class="menu-main-title">The Café & Bakery Menu</h2>
           <p class="menu-intro-text">
-            Small-batch single origin microlots roasted on cast-iron drums and unglazed porcelain objects. Sourced directly through multi-year grower partnerships.
+            Single-origin extractions, 72-hour proved French viennoiserie baked fresh every dawn, and reserve harvest microlots. Crafted with unvarnished restraint.
           </p>
         </div>
 
-        <!-- Centered Menu Items with Product Images (Anti-Card, Pure Editorial Flow) -->
-        <div class="menu-items-flow">
+        <!-- Real Client Operational & Dietary Information Card -->
+        <div class="menu-operations-card">
+          <div class="op-column">
+            <span class="op-title">Service Hours</span>
+            <p class="op-desc">
+              <strong>Morning Viennoiserie:</strong> 7:00 AM – 12:00 PM<br>
+              <strong>All-Day Coffee & Light Fare:</strong> 7:00 AM – 6:00 PM
+            </p>
+          </div>
+          <div class="op-column">
+            <span class="op-title">Milks & Customizations</span>
+            <p class="op-desc">
+              Organic whole milk standard.<br>
+              Oatly Barista or House Almond Milk (+ $0.75).<br>
+              Swiss Water Process Decaf (No extra charge).
+            </p>
+          </div>
+          <div class="op-column">
+            <span class="op-title">Dine-In & Sustainability</span>
+            <p class="op-desc">
+              Hand-thrown ceramics for dine-in guests.<br>
+              100% compostable takeaway ware.<br>
+              $0.50 discount with your personal cup.
+            </p>
+          </div>
+          <div class="op-column">
+            <span class="op-title">Allergen Transparency</span>
+            <p class="op-desc">
+              Pastries baked fresh daily on-site.<br>
+              Facility handles stone-milled wheat, dairy, and almonds. Please notify staff of severe allergies.
+            </p>
+          </div>
+        </div>
+
+        <!-- Clear Menu Navigation: Category Filter Tabs -->
+        <div class="menu-navigation-bar" role="tablist" aria-label="Menu Categories">
+          <button type="button" class="menu-nav-btn active" role="tab" aria-selected="true" data-category="all">
+            <span>All Items</span>
+            <span class="category-count" id="count-all">19</span>
+          </button>
+          <button type="button" class="menu-nav-btn" role="tab" aria-selected="false" data-category="espresso">
+            <span>Espresso & Milk</span>
+            <span class="category-count">5</span>
+          </button>
+          <button type="button" class="menu-nav-btn" role="tab" aria-selected="false" data-category="slowbar">
+            <span>Slow Bar & Filter</span>
+            <span class="category-count">3</span>
+          </button>
+          <button type="button" class="menu-nav-btn" role="tab" aria-selected="false" data-category="tea">
+            <span>Tea & Botanical</span>
+            <span class="category-count">2</span>
+          </button>
+          <button type="button" class="menu-nav-btn" role="tab" aria-selected="false" data-category="bakery">
+            <span>House Bakery</span>
+            <span class="category-count">4</span>
+          </button>
+          <button type="button" class="menu-nav-btn" role="tab" aria-selected="false" data-category="retail">
+            <span>Whole Beans & Ceramics</span>
+            <span class="category-count">5</span>
+          </button>
+        </div>
+
+        <!-- Dietary Filter & Search Controls -->
+        <div class="menu-controls-row">
+          <div class="dietary-filter-group" role="group" aria-label="Filter by dietary preference">
+            <span class="filter-label">Dietary:</span>
+            <button type="button" class="diet-filter-pill active" data-diet="all">All</button>
+            <button type="button" class="diet-filter-pill" data-diet="vegan">🌱 Vegan</button>
+            <button type="button" class="diet-filter-pill" data-diet="vegetarian">🌿 Vegetarian</button>
+            <button type="button" class="diet-filter-pill" data-diet="gluten-free">🌾 Gluten-Free</button>
+            <button type="button" class="diet-filter-pill" data-diet="nut-free">🥜 Nut-Free</button>
+          </div>
+
+          <div class="menu-search-wrapper">
+            <label for="menu-search-input" class="sr-only">Search menu items</label>
+            <input type="text" id="menu-search-input" placeholder="Search menu by name, notes, or origin..." class="menu-search-field" autocomplete="off">
+            <button type="button" id="menu-search-clear" class="search-clear-btn" aria-label="Clear search">×</button>
+          </div>
+        </div>
+
+        <!-- Active Filter Status Indicator -->
+        <div class="menu-filter-status" id="menu-filter-status" aria-live="polite">
+          Showing <span id="visible-count">19</span> items
+        </div>
+
+        <!-- Practical Menu Grid -->
+        <div class="menu-practical-grid" id="menu-items-grid">
           
-          <!-- Menu Item 1 -->
-          <div class="menu-item-entry">
-            <div class="menu-item-visual">
-              <img src="./assets/item_ethiopia.jpg" alt="Guji Hambela Alaka coffee bag" class="menu-item-img">
+          <!-- ITEM 1: House Double Espresso -->
+          <article class="menu-card" data-category="espresso" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="House Double Espresso">
+            <div class="menu-card-visual">
+              <img src="./assets/latte_top.jpg" alt="House Double Espresso extraction" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Espresso Bar</span>
             </div>
-            <div class="menu-item-content">
-              <h3 class="menu-item-name">Guji Hambela Alaka</h3>
-              <span class="menu-item-origin">Ethiopia • High Elevation Washed Heirloom • 2,180m</span>
-              <p class="menu-item-notes">Delicate jasmine blossom, bergamot tea, and sweet white peach with sparkling malic acidity.</p>
-              <div class="menu-item-action-row">
-                <span class="menu-item-price">$24.00</span>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">House Double Espresso</h3>
+                <span class="menu-card-price">$3.75</span>
+              </div>
+              <span class="menu-card-origin">Ethiopia Guji Heirloom • Washed • 93.4°C</span>
+              <p class="menu-card-desc">Double extraction (18g in / 36g out). Bright candied bergamot, sweet mandarin zest, and bittersweet dark cocoa finish.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg" title="100% Plant-Based">Vegan</span>
+                <span class="diet-badge diet-gf" title="Gluten-Free">GF</span>
+                <span class="diet-badge diet-nf" title="Nut-Free">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Double Shot • 36ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-01" data-name="House Double Espresso" data-price="3.75" data-type="In-Café Espresso">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 2: Velvety Flat White / Cappuccino -->
+          <article class="menu-card" data-category="espresso" data-diets="vegetarian nut-free dairy-free-opt" data-name="Velvety Flat White / Cappuccino">
+            <div class="menu-card-visual">
+              <img src="./assets/latte_top.jpg" alt="Velvety Flat White with microfoam tulip art" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Espresso Bar</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Velvety Flat White / Cappuccino</h3>
+                <span class="menu-card-price">$5.25</span>
+              </div>
+              <span class="menu-card-origin">Double Ristretto • 62°C Steamed Microfoam</span>
+              <p class="menu-card-desc">Glossy textured microfoam folded into rich double extraction. High natural sweetness with caramel and toasted hazelnut notes.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v" title="Vegetarian">Vegetarian</span>
+                <span class="diet-badge diet-df" title="Oatly / Almond milk available">DF Option</span>
+                <span class="diet-badge diet-nf" title="Nut-Free">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Ceramic Cup • 180ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-02" data-name="Velvety Flat White" data-price="5.25" data-type="In-Café Milk Beverage">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 3: Spanish Cortado / Piccolo -->
+          <article class="menu-card" data-category="espresso" data-diets="vegetarian nut-free dairy-free-opt" data-name="Spanish Cortado / Piccolo">
+            <div class="menu-card-visual">
+              <img src="./assets/latte_top.jpg" alt="Cortado in glass tumbler" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Espresso Bar</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Spanish Cortado</h3>
+                <span class="menu-card-price">$4.50</span>
+              </div>
+              <span class="menu-card-origin">1:1 Ratio • Double Shot & Steamed Milk • 130ml</span>
+              <p class="menu-card-desc">Equal parts intense espresso extraction and silky textured milk. Balanced body, low acidity, served in heavy faceted glass.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-df">DF Option</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Glass Tumbler • 130ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-03" data-name="Spanish Cortado" data-price="4.50" data-type="In-Café Espresso">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 4: Slow-Drip Americano / Long Black -->
+          <article class="menu-card" data-category="espresso" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="Slow-Drip Americano / Long Black">
+            <div class="menu-card-visual">
+              <img src="./assets/latte_top.jpg" alt="Americano long black with golden crema" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Espresso Bar</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Americano / Long Black</h3>
+                <span class="menu-card-price">$4.25</span>
+              </div>
+              <span class="menu-card-origin">Alpine Spring Water • Double Crema Float</span>
+              <p class="menu-card-desc">Hot spring water crowned with unvarnished double extraction. Pure clarity, crisp floral finish, zero harsh bitterness.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg">Vegan</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Hot or Iced • 240ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-04" data-name="Americano / Long Black" data-price="4.25" data-type="In-Café Espresso">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 5: Madagascar Vanilla Bean Latte -->
+          <article class="menu-card" data-category="espresso" data-diets="vegetarian nut-free dairy-free-opt" data-name="Madagascar Vanilla Bean Latte">
+            <div class="menu-card-visual">
+              <img src="./assets/latte_top.jpg" alt="Madagascar Vanilla Latte" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Espresso Bar</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Madagascar Vanilla Latte</h3>
+                <span class="menu-card-price">$6.00</span>
+              </div>
+              <span class="menu-card-origin">House-Steeped Whole Vanilla Pods & Raw Cane</span>
+              <p class="menu-card-desc">Genuine cured bourbon vanilla beans slow-simmered into organic unrefined cane syrup, double espresso, and textured microfoam.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-df">DF Option</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Hot or Iced • 280ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-05" data-name="Madagascar Vanilla Latte" data-price="6.00" data-type="In-Café Milk Beverage">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 6: Single-Origin V60 Hand Pour-Over -->
+          <article class="menu-card" data-category="slowbar" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="Single-Origin V60 Hand Pour-Over">
+            <div class="menu-card-visual">
+              <img src="./assets/dripper.jpg" alt="Single origin hand pour-over coffee" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Slow Bar</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Single-Origin V60 Pour-Over</h3>
+                <span class="menu-card-price">$6.50</span>
+              </div>
+              <span class="menu-card-origin">Current Harvest: Guji Hambela Alaka (2,180m)</span>
+              <p class="menu-card-desc">Hand-poured at 93.4°C through Japanese porcelain dripper. Sparkling white peach, jasmine blossom, and crystalline tea-like sweetness.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg">Vegan</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+                <span class="diet-badge diet-organic">Organic</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Porcelain Carafe • 300ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-06" data-name="Single-Origin V60 Pour-Over" data-price="6.50" data-type="Slow Bar Pour-Over">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 7: 16-Hour Kyoto Cold Drip Reserve -->
+          <article class="menu-card" data-category="slowbar" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="16-Hour Kyoto Cold Drip Reserve">
+            <div class="menu-card-visual">
+              <img src="./assets/dripper.jpg" alt="Kyoto cold drip coffee" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Slow Bar</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Kyoto Cold Drip Reserve</h3>
+                <span class="menu-card-price">$5.50</span>
+              </div>
+              <span class="menu-card-origin">16-Hour Ice-Drop Extraction • Hand-Carved Ice</span>
+              <p class="menu-card-desc">Extracted drop by drop over sixteen hours. Remarkably silky, low acidity, winey plum notes, and lingering dark chocolate sweetness.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg">Vegan</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Over Ice Sphere • 200ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-07" data-name="Kyoto Cold Drip Reserve" data-price="5.50" data-type="Cold Beverage">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 8: Morning Batch Filter -->
+          <article class="menu-card" data-category="slowbar" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="Morning Batch Filter">
+            <div class="menu-card-visual">
+              <img src="./assets/dripper.jpg" alt="Morning batch filter coffee" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Slow Bar</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Morning Batch Filter</h3>
+                <span class="menu-card-price">$4.00</span>
+              </div>
+              <span class="menu-card-origin">Rotating Seasonal Lot • Precision Marco System</span>
+              <p class="menu-card-desc">Balanced, comforting daily harvest filter lot brewed hourly. Fast service with pristine temperature stability.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg">Vegan</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Mug / Takeaway • 300ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-08" data-name="Morning Batch Filter" data-price="4.00" data-type="Filter Coffee">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 9: Ceremonial Uji Matcha Latte -->
+          <article class="menu-card" data-category="tea" data-diets="vegetarian gluten-free nut-free dairy-free-opt" data-name="Ceremonial Uji Matcha Latte">
+            <div class="menu-card-visual">
+              <img src="./assets/item_matcha.jpg" alt="Ceremonial Uji Matcha Latte with leaf art" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Tea & Botanical</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Ceremonial Uji Matcha Latte</h3>
+                <span class="menu-card-price">$6.00</span>
+              </div>
+              <span class="menu-card-origin">First-Harvest Stone-Ground Tencha • Kyoto, Japan</span>
+              <p class="menu-card-desc">Whisked with traditional bamboo chasen. Vivid emerald hue, rich umami, silky texture, and delicate natural sweetness.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-df">VG with Oatly</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Hot or Iced • 240ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-09" data-name="Ceremonial Uji Matcha Latte" data-price="6.00" data-type="Tea & Botanical">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 10: Charcoal-Roasted Hojicha Amber Latte -->
+          <article class="menu-card" data-category="tea" data-diets="vegetarian gluten-free nut-free dairy-free-opt" data-name="Charcoal-Roasted Hojicha Amber Latte">
+            <div class="menu-card-visual">
+              <img src="./assets/item_matcha.jpg" alt="Roasted Hojicha Amber Latte" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Tea & Botanical</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Roasted Hojicha Amber Latte</h3>
+                <span class="menu-card-price">$5.75</span>
+              </div>
+              <span class="menu-card-origin">Charcoal-Roasted Bancha • Kyoto, Japan</span>
+              <p class="menu-card-desc">Deep roasted green tea stems creating toasty hazelnut, caramel, and malt undertones. Naturally low caffeine.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-df">VG with Oatly</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Hot or Iced • 240ml</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="drink-10" data-name="Roasted Hojicha Amber Latte" data-price="5.75" data-type="Tea & Botanical">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 11: 27-Fold Normandy Butter Croissant -->
+          <article class="menu-card" data-category="bakery" data-diets="vegetarian nut-free" data-name="27-Fold Normandy Butter Croissant">
+            <div class="menu-card-visual">
+              <img src="./assets/croissant.jpg" alt="Golden flaky 27-fold butter croissant" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">House Bakery</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">27-Fold Normandy Croissant</h3>
+                <span class="menu-card-price">$4.75</span>
+              </div>
+              <span class="menu-card-origin">Baked at 6:30 AM Daily • 72-Hour Proved Lamination</span>
+              <p class="menu-card-desc">Flaked French pastry made with cultured Normandy butter. Shattering crisp crust yielding to an airy, honeycomb interior.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Baked Daily • Limited Batch</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="bake-01" data-name="27-Fold Normandy Croissant" data-price="4.75" data-type="House Viennoiserie">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 12: Valrhona 70% Pain au Chocolat -->
+          <article class="menu-card" data-category="bakery" data-diets="vegetarian nut-free" data-name="Valrhona 70% Pain au Chocolat">
+            <div class="menu-card-visual">
+              <img src="./assets/item_pain_chocolat.jpg" alt="Valrhona 70% Pain au Chocolat" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">House Bakery</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Valrhona Pain au Chocolat</h3>
+                <span class="menu-card-price">$5.50</span>
+              </div>
+              <span class="menu-card-origin">Twin Guanaja 70% Batons • French Cultured Butter</span>
+              <p class="menu-card-desc">Laminated butter brioche enveloping twin bars of bittersweet Valrhona dark chocolate. Melt-in-mouth richness.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Baked Daily • Limited Batch</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="bake-02" data-name="Valrhona Pain au Chocolat" data-price="5.50" data-type="House Viennoiserie">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 13: Cardamom Morning Bun -->
+          <article class="menu-card" data-category="bakery" data-diets="vegetarian nut-free" data-name="Cardamom Morning Bun">
+            <div class="menu-card-visual">
+              <img src="./assets/croissant.jpg" alt="Cardamom morning bun" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">House Bakery</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Cardamom Morning Bun</h3>
+                <span class="menu-card-price">$5.00</span>
+              </div>
+              <span class="menu-card-origin">Nordic Sourdough Brioche • Freshly Ground Green Pods</span>
+              <p class="menu-card-desc">Hand-twisted brioche coated in raw Demerara sugar crystals and freshly crushed cardamom. Fragrant, spiced, caramelized base.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Baked Daily • Limited Batch</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="bake-03" data-name="Cardamom Morning Bun" data-price="5.00" data-type="House Viennoiserie">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 14: Gluten-Free Sicilian Lemon & Olive Oil Loaf -->
+          <article class="menu-card" data-category="bakery" data-diets="vegetarian gluten-free dairy-free" data-name="Gluten-Free Sicilian Lemon & Olive Oil Loaf">
+            <div class="menu-card-visual">
+              <img src="./assets/croissant.jpg" alt="Gluten free olive oil lemon loaf slice" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">House Bakery</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Lemon Olive Oil Loaf (GF)</h3>
+                <span class="menu-card-price">$4.75</span>
+              </div>
+              <span class="menu-card-origin">Cold-Pressed Sicilian Olive Oil • Almond Flour</span>
+              <p class="menu-card-desc">Tender gluten-free crumb infused with fragrant Amalfi lemon zest, cold-pressed olive oil, and organic poppy seed glaze.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-v">Vegetarian</span>
+                <span class="diet-badge diet-gf">Gluten-Free</span>
+                <span class="diet-badge diet-df">Dairy-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Generous Thick Slice</span>
+                <button class="menu-add-btn add-to-bag-trigger" data-id="bake-04" data-name="Lemon Olive Oil Loaf (GF)" data-price="4.75" data-type="Gluten-Free Bakery">
+                  Add to Bag
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ITEM 15: Guji Hambela Alaka (250g Whole Bean) -->
+          <article class="menu-card" data-category="retail" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="Guji Hambela Alaka Whole Bean">
+            <div class="menu-card-visual">
+              <img src="./assets/item_ethiopia.jpg" alt="Guji Hambela Alaka whole bean bag" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Whole Bean Retail</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Guji Hambela Alaka</h3>
+                <span class="menu-card-price">$24.00</span>
+              </div>
+              <span class="menu-card-origin">Ethiopia • Washed Heirloom • 2,180m Elevation</span>
+              <p class="menu-card-desc">Delicate jasmine blossom, bergamot tea, and sweet white peach with sparkling malic acidity. Cast-iron drum light roast.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg">Vegan</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">250g Valve Bag • Roasted Weekly</span>
                 <button class="menu-add-btn add-to-bag-trigger" data-id="lot-01" data-name="Guji Hambela Alaka" data-price="24.00" data-type="250g Whole Bean">
                   Add to Bag
                 </button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Menu Item 2 -->
-          <div class="menu-item-entry">
-            <div class="menu-item-visual">
-              <img src="./assets/item_colombia.jpg" alt="Finca El Paraiso Thermal canister" class="menu-item-img">
+          <!-- ITEM 16: Finca El Paraiso Thermal (250g Canister) -->
+          <article class="menu-card" data-category="retail" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="Finca El Paraiso Thermal Canister">
+            <div class="menu-card-visual">
+              <img src="./assets/item_colombia.jpg" alt="Finca El Paraiso Thermal canister" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Whole Bean Retail</span>
             </div>
-            <div class="menu-item-content">
-              <h3 class="menu-item-name">Finca El Paraiso Thermal</h3>
-              <span class="menu-item-origin">Colombia • Thermal Shock Anaerobic • 1,950m</span>
-              <p class="menu-item-notes">Aromatic lychee fruit, wild rose water, sweet raspberry coulis, and lingering vanilla cane sugar.</p>
-              <div class="menu-item-action-row">
-                <span class="menu-item-price">$32.00</span>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Finca El Paraiso Thermal</h3>
+                <span class="menu-card-price">$32.00</span>
+              </div>
+              <span class="menu-card-origin">Colombia • Thermal Shock Anaerobic • 1,950m</span>
+              <p class="menu-card-desc">Aromatic lychee fruit, wild rose water, sweet raspberry coulis, and lingering vanilla cane sugar. Extraordinary anaerobic profile.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg">Vegan</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">250g Steel Canister</span>
                 <button class="menu-add-btn add-to-bag-trigger" data-id="lot-02" data-name="Finca El Paraiso Thermal" data-price="32.00" data-type="250g Whole Bean">
                   Add to Bag
                 </button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Menu Item 3 -->
-          <div class="menu-item-entry">
-            <div class="menu-item-visual">
-              <img src="./assets/item_panama.jpg" alt="Panama Geisha Reserve box" class="menu-item-img">
+          <!-- ITEM 17: Geisha Especial Hacienda (150g Reserve) -->
+          <article class="menu-card" data-category="retail" data-diets="vegan vegetarian dairy-free gluten-free nut-free" data-name="Geisha Especial Hacienda Reserve">
+            <div class="menu-card-visual">
+              <img src="./assets/item_panama.jpg" alt="Panama Geisha reserve box" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Whole Bean Retail</span>
             </div>
-            <div class="menu-item-content">
-              <h3 class="menu-item-name">Geisha Especial Hacienda</h3>
-              <span class="menu-item-origin">Panama Boquete • Slow Natural Sun-Dried • 1,850m</span>
-              <p class="menu-item-notes">Meyer lemon confit, orange blossom, wild lemongrass honey, and extraordinary silky tea finish.</p>
-              <div class="menu-item-action-row">
-                <span class="menu-item-price">$48.00</span>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Geisha Especial Hacienda</h3>
+                <span class="menu-card-price">$48.00</span>
+              </div>
+              <span class="menu-card-origin">Panama Boquete • Slow Natural Sun-Dried • 1,850m</span>
+              <p class="menu-card-desc">Meyer lemon confit, orange blossom, wild lemongrass honey, and extraordinary silky tea finish. Limited numbered release.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-vg">Vegan</span>
+                <span class="diet-badge diet-gf">GF</span>
+                <span class="diet-badge diet-nf">Nut-Free</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">150g Reserve Box</span>
                 <button class="menu-add-btn add-to-bag-trigger" data-id="lot-03" data-name="Geisha Especial Hacienda" data-price="48.00" data-type="150g Reserve">
                   Add to Bag
                 </button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Menu Item 4 -->
-          <div class="menu-item-entry">
-            <div class="menu-item-visual">
-              <img src="./assets/item_cup.jpg" alt="Mono Matte Porcelain Cup and Saucer" class="menu-item-img">
+          <!-- ITEM 18: Mono Matte Porcelain Cup & Saucer -->
+          <article class="menu-card" data-category="retail" data-diets="hardware" data-name="Mono Matte Porcelain Cup & Saucer">
+            <div class="menu-card-visual">
+              <img src="./assets/item_cup.jpg" alt="Mono Matte Porcelain Cup and Saucer" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Ceramics & Hardware</span>
             </div>
-            <div class="menu-item-content">
-              <h3 class="menu-item-name">Mono Matte Porcelain Cup & Saucer</h3>
-              <span class="menu-item-origin">Handmade Ceramic Object • One Hundred and Eighty Milliliters</span>
-              <p class="menu-item-notes">Cast from raw unglazed feldspar porcelain with a silky glazed inner bowl and six millimeter thermal retention rim.</p>
-              <div class="menu-item-action-row">
-                <span class="menu-item-price">$38.00</span>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Mono Matte Porcelain Cup</h3>
+                <span class="menu-card-price">$38.00</span>
+              </div>
+              <span class="menu-card-origin">Handmade Ceramic Object • 180ml Capacity</span>
+              <p class="menu-card-desc">Unglazed feldspar porcelain with silky glazed inner bowl and 6mm thermal retention rim. Created exclusively for Kaffa Studios.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-obj">Handmade Ceramic</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">Includes Cup & Saucer</span>
                 <button class="menu-add-btn add-to-bag-trigger" data-id="obj-01" data-name="Mono Matte Porcelain Cup & Saucer" data-price="38.00" data-type="Set of 1">
                   Add to Bag
                 </button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Menu Item 5 -->
-          <div class="menu-item-entry">
-            <div class="menu-item-visual">
-              <img src="./assets/item_pitcher.jpg" alt="Precision Barista Milk Pitcher" class="menu-item-img">
+          <!-- ITEM 19: Precision Barista Milk Pitcher -->
+          <article class="menu-card" data-category="retail" data-diets="hardware" data-name="Precision Barista Milk Pitcher">
+            <div class="menu-card-visual">
+              <img src="./assets/item_pitcher.jpg" alt="Precision Barista Milk Pitcher" class="menu-card-img" loading="lazy">
+              <span class="card-category-tag">Ceramics & Hardware</span>
             </div>
-            <div class="menu-item-content">
-              <h3 class="menu-item-name">Precision Barista Milk Pitcher</h3>
-              <span class="menu-item-origin">Machined Surgical Stainless Steel • Three Hundred and Fifty Milliliters</span>
-              <p class="menu-item-notes">Heavy gauge three hundred and four brushed steel with laser-aligned pour spout for symmetrical latte art pouring.</p>
-              <div class="menu-item-action-row">
-                <span class="menu-item-price">$48.00</span>
+            <div class="menu-card-body">
+              <div class="menu-card-header">
+                <h3 class="menu-card-title">Precision Barista Milk Pitcher</h3>
+                <span class="menu-card-price">$48.00</span>
+              </div>
+              <span class="menu-card-origin">304 Brushed Surgical Steel • 350ml</span>
+              <p class="menu-card-desc">Laser-aligned pour spout, heavy gauge walls for optimal microfoam thermal control, and balanced ergonomic handling.</p>
+              
+              <div class="card-dietary-row">
+                <span class="diet-badge diet-obj">Precision Hardware</span>
+              </div>
+
+              <div class="menu-card-footer">
+                <span class="serving-size">350ml Volume</span>
                 <button class="menu-add-btn add-to-bag-trigger" data-id="obj-02" data-name="Precision Barista Milk Pitcher" data-price="48.00" data-type="Hardware">
                   Add to Bag
                 </button>
               </div>
             </div>
-          </div>
+          </article>
 
+        </div>
+
+        <!-- No Results Notice (Dynamic) -->
+        <div id="menu-no-results" class="menu-no-results" style="display: none;">
+          <p>No menu items matched your dietary or search filters.</p>
+          <button type="button" id="reset-menu-filters-btn" class="reset-filters-btn">Reset All Filters</button>
         </div>
 
       </div>
     </section>
 
-    <!-- SECTION 8: GLOBAL ATELIERS (Centered Layout) -->
-    <section id="ateliers" class="section-ateliers">
+    <!-- SECTION 8: GLOBAL ATELIERS & LOCAL BUSINESS ESSENTIALS -->
+    <section id="ateliers" class="section-ateliers" aria-label="Flagship Ateliers and Local Business Essentials">
       <div class="center-container">
         
         <div class="centered-intro">
-          <span class="section-kicker">Flagship Spaces</span>
+          <span class="section-kicker">Flagship Spaces & Business Essentials</span>
           <h2 class="centered-title">Sanctuaries of Light, Stone & Stillness</h2>
+          <p class="section-subtitle-text">
+            Four physical ateliers united by single-origin terroir, slow extraction, and quiet architecture. Main café seating is always walk-in only; guided tasting workshops and private cuppings can be booked in advance.
+          </p>
         </div>
 
-        <div class="centered-studios-grid">
+        <!-- Service & Booking Policy Banner (Verified with Owner) -->
+        <div class="ateliers-policy-banner">
+          <div class="policy-item">
+            <span class="policy-icon-pill">✦ Walk-In Policy</span>
+            <div class="policy-text">
+              <strong>Café & Viennoiserie Service:</strong> Always walk-in only. Step inside for espresso, pour-overs, and morning pastries. No reservations needed.
+            </div>
+          </div>
+          <div class="policy-divider" aria-hidden="true"></div>
+          <div class="policy-item">
+            <span class="policy-icon-pill">✦ Reservation Policy</span>
+            <div class="policy-text">
+              <strong>Private Cupping Workshops:</strong> Guided 45-to-60 min tasting flights with head roasters at the Slow Bar counter can be booked online or via email.
+            </div>
+          </div>
+        </div>
+
+        <!-- City Navigation Tabs -->
+        <div class="atelier-tabs-bar" role="tablist" aria-label="Atelier locations">
+          <button type="button" class="atelier-tab-btn active" role="tab" aria-selected="true" data-target-city="all">All Spaces</button>
+          <button type="button" class="atelier-tab-btn" role="tab" aria-selected="false" data-target-city="milan">Milano (Flagship)</button>
+          <button type="button" class="atelier-tab-btn" role="tab" aria-selected="false" data-target-city="kyoto">Kyoto</button>
+          <button type="button" class="atelier-tab-btn" role="tab" aria-selected="false" data-target-city="zurich">Zürich</button>
+          <button type="button" class="atelier-tab-btn" role="tab" aria-selected="false" data-target-city="copenhagen">København</button>
+        </div>
+
+        <!-- Ateliers Detailed Grid -->
+        <div class="ateliers-comprehensive-grid">
           
-          <div class="studio-center-block">
-            <h3 class="studio-city">Milano</h3>
-            <p class="studio-desc">Via Brera fourteen in the historical design district. Natural travertine stone counters and slow pour-over bars bathed in morning light.</p>
-            <span class="studio-time">Open morning to late afternoon</span>
-          </div>
+          <!-- ATELIER 1: MILANO -->
+          <article class="atelier-card" data-city="milan">
+            <div class="atelier-card-header">
+              <div class="atelier-badge-group">
+                <span class="atelier-type-tag">Flagship Atelier & Roastery</span>
+                <span class="live-status-pill" data-city="milan">
+                  <span class="status-pulse-dot" aria-hidden="true"></span>
+                  <span class="status-text">Checking hours...</span>
+                </span>
+              </div>
+              <h3 class="atelier-city-title">Via Brera 14, Milano</h3>
+              <span class="atelier-neighborhood">Brera Historical Arts & Design Quarter • 20121 Milano MI, Italy</span>
+            </div>
 
-          <div class="studio-center-block">
-            <h3 class="studio-city">Kyoto</h3>
-            <p class="studio-desc">Along the Kamogawa river in Nakagyo Ward. Japanese cedar woodwork, tatami tea corners, and acoustic stillness.</p>
-            <span class="studio-time">Open sunrise to dusk</span>
-          </div>
+            <p class="atelier-narrative">
+              Travertine stone espresso bar, light-filled historic courtyard, and Cast-iron drum roastery bathed in morning light.
+            </p>
 
-          <div class="studio-center-block">
-            <h3 class="studio-city">Zurich</h3>
-            <p class="studio-desc">Augustinergasse twelve in the Old Town. Minimalist lime plaster walls, filtered Alpine spring water, and single origin flights.</p>
-            <span class="studio-time">Open early morning to afternoon</span>
-          </div>
+            <!-- Hours Table -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Verified Opening Hours</span>
+              <dl class="hours-schedule-list">
+                <div class="schedule-row">
+                  <dt>Monday – Friday</dt>
+                  <dd>7:00 AM – 6:00 PM</dd>
+                </div>
+                <div class="schedule-row">
+                  <dt>Saturday – Sunday</dt>
+                  <dd>8:00 AM – 7:00 PM</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Morning Viennoiserie</dt>
+                  <dd>Fresh from 7:00 AM Daily</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Cupping Masterclasses</dt>
+                  <dd>Daily at 10:00 AM & 2:00 PM</dd>
+                </div>
+              </dl>
+            </div>
 
-          <div class="studio-center-block">
-            <h3 class="studio-city">Copenhagen</h3>
-            <p class="studio-desc">Jaegersborggade forty-one in Noerrebro. Nordic Douglas fir tables, sourdough brioche pairings, and seasonal filter lots.</p>
-            <span class="studio-time">Open morning to late afternoon</span>
-          </div>
+            <!-- Transit & Parking Guidance -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Directions & Transit</span>
+              <ul class="transit-guidance-list">
+                <li><strong>Metro:</strong> M2 (Lanza, 3 min walk) • M1 (Cairoli, 6 min walk)</li>
+                <li><strong>Tram:</strong> Lines 1, 2, 12, 14 (Via Cusani stop, 2 min walk)</li>
+                <li><strong>Public Parking:</strong> Garage Brera (Via San Marco 10, 200m away)</li>
+              </ul>
+            </div>
 
+            <!-- Contact Details -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Direct Contact</span>
+              <div class="atelier-contacts-grid">
+                <a href="tel:+390284932140" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span><strong>Direct Line:</strong> +39 02 8493 2140</span>
+                </a>
+                <a href="mailto:atelier@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span><strong>Concierge:</strong> atelier@kaffastudios.com</span>
+                </a>
+                <a href="mailto:reservations@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span><strong>Bookings:</strong> reservations@kaffastudios.com</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="atelier-card-actions">
+              <button type="button" class="btn-action-primary atelier-reserve-trigger" data-city="milan">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Via+Brera+14+Milano" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Via+Brera+14,20121+Milano,Italy" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="btn-action-secondary city-btn-copy" data-address="Via Brera 14, 20121 Milano, Italy">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ATELIER 2: KYOTO -->
+          <article class="atelier-card" data-city="kyoto">
+            <div class="atelier-card-header">
+              <div class="atelier-badge-group">
+                <span class="atelier-type-tag">River Atelier & Tea Counter</span>
+                <span class="live-status-pill" data-city="kyoto">
+                  <span class="status-pulse-dot" aria-hidden="true"></span>
+                  <span class="status-text">Checking hours...</span>
+                </span>
+              </div>
+              <h3 class="atelier-city-title">Kamogawa Sanjo, Kyoto</h3>
+              <span class="atelier-neighborhood">Nakagyo Ward • 604-8004 Kyoto, Japan</span>
+            </div>
+
+            <p class="atelier-narrative">
+              Riverside Japanese cedar architecture, tatami tea benches, acoustic quietude, and ceremonial slow extraction.
+            </p>
+
+            <!-- Hours Table -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Verified Opening Hours</span>
+              <dl class="hours-schedule-list">
+                <div class="schedule-row">
+                  <dt>Tuesday – Sunday</dt>
+                  <dd>7:30 AM – 5:30 PM</dd>
+                </div>
+                <div class="schedule-row">
+                  <dt>Monday</dt>
+                  <dd>Closed (Roasting & Sourcing)</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Kyoto Cold Drip & Matcha</dt>
+                  <dd>Available All Day</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Cupping Sessions</dt>
+                  <dd>Wed & Sat at 11:00 AM</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Transit & Parking Guidance -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Directions & Transit</span>
+              <ul class="transit-guidance-list">
+                <li><strong>Station:</strong> Sanjo Keihan Station (Exit 2, 2 min walk)</li>
+                <li><strong>Railway:</strong> Hankyu Kyoto-Kawaramachi Station (7 min walk)</li>
+                <li><strong>Access:</strong> Pedestrian stone river walkway alongside Sanjo Bridge</li>
+              </ul>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Direct Contact</span>
+              <div class="atelier-contacts-grid">
+                <a href="tel:+81752548831" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span><strong>Direct Line:</strong> +81 75 254 8831</span>
+                </a>
+                <a href="mailto:kyoto@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span><strong>Concierge:</strong> kyoto@kaffastudios.com</span>
+                </a>
+                <a href="mailto:reservations@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span><strong>Bookings:</strong> reservations@kaffastudios.com</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="atelier-card-actions">
+              <button type="button" class="btn-action-primary atelier-reserve-trigger" data-city="kyoto">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Kamogawa+Sanjo+Kyoto" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Kamogawa+Sanjo,Nakagyo+Ward,604-8004+Kyoto,Japan" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="btn-action-secondary city-btn-copy" data-address="Kamogawa Sanjo, Nakagyo Ward, 604-8004 Kyoto, Japan">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ATELIER 3: ZURICH -->
+          <article class="atelier-card" data-city="zurich">
+            <div class="atelier-card-header">
+              <div class="atelier-badge-group">
+                <span class="atelier-type-tag">Old Town Atelier & Alpine Bar</span>
+                <span class="live-status-pill" data-city="zurich">
+                  <span class="status-pulse-dot" aria-hidden="true"></span>
+                  <span class="status-text">Checking hours...</span>
+                </span>
+              </div>
+              <h3 class="atelier-city-title">Augustinergasse 12, Zürich</h3>
+              <span class="atelier-neighborhood">Lindenhof Historic Center • 8001 Zürich, Switzerland</span>
+            </div>
+
+            <p class="atelier-narrative">
+              Minimalist lime plaster walls, filtered Alpine spring water brew bar, and single-origin lot flights in the medieval Old Town.
+            </p>
+
+            <!-- Hours Table -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Verified Opening Hours</span>
+              <dl class="hours-schedule-list">
+                <div class="schedule-row">
+                  <dt>Monday – Saturday</dt>
+                  <dd>7:30 AM – 5:00 PM</dd>
+                </div>
+                <div class="schedule-row">
+                  <dt>Sunday</dt>
+                  <dd>Closed (Day of Rest)</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Morning Loaf & Pastry</dt>
+                  <dd>7:30 AM – 1:00 PM</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Cupping Masterclasses</dt>
+                  <dd>Thu & Sat at 10:30 AM</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Transit & Parking Guidance -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Directions & Transit</span>
+              <ul class="transit-guidance-list">
+                <li><strong>Tram:</strong> Lines 6, 7, 11, 13 (Rennweg stop, 2 min walk)</li>
+                <li><strong>Main Station:</strong> Zürich HB (8 min walk or 2 stops)</li>
+                <li><strong>Public Parking:</strong> Parkhaus Urania (Uraniastrasse 3, 300m away)</li>
+              </ul>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Direct Contact</span>
+              <div class="atelier-contacts-grid">
+                <a href="tel:+41442114050" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span><strong>Direct Line:</strong> +41 44 211 4050</span>
+                </a>
+                <a href="mailto:zurich@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span><strong>Concierge:</strong> zurich@kaffastudios.com</span>
+                </a>
+                <a href="mailto:reservations@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span><strong>Bookings:</strong> reservations@kaffastudios.com</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="atelier-card-actions">
+              <button type="button" class="btn-action-primary atelier-reserve-trigger" data-city="zurich">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Augustinergasse+12+Zurich" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Augustinergasse+12,8001+Zurich,Switzerland" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="btn-action-secondary city-btn-copy" data-address="Augustinergasse 12, 8001 Zürich, Switzerland">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- ATELIER 4: COPENHAGEN -->
+          <article class="atelier-card" data-city="copenhagen">
+            <div class="atelier-card-header">
+              <div class="atelier-badge-group">
+                <span class="atelier-type-tag">Nordic Atelier & Bakery</span>
+                <span class="live-status-pill" data-city="copenhagen">
+                  <span class="status-pulse-dot" aria-hidden="true"></span>
+                  <span class="status-text">Checking hours...</span>
+                </span>
+              </div>
+              <h3 class="atelier-city-title">Jægersborggade 41, København</h3>
+              <span class="atelier-neighborhood">Nørrebro Design District • 2200 København N, Denmark</span>
+            </div>
+
+            <p class="atelier-narrative">
+              Nordic Douglas fir communal tables, 72-hour proved cardamom morning buns, and seasonal light-roast filter lots.
+            </p>
+
+            <!-- Hours Table -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Verified Opening Hours</span>
+              <dl class="hours-schedule-list">
+                <div class="schedule-row">
+                  <dt>Wednesday – Sunday</dt>
+                  <dd>8:00 AM – 5:30 PM</dd>
+                </div>
+                <div class="schedule-row">
+                  <dt>Monday – Tuesday</dt>
+                  <dd>Closed (Dough Fermentation)</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Warm Cardamom Buns</dt>
+                  <dd>8:00 AM & 1:00 PM</dd>
+                </div>
+                <div class="schedule-row highlight-sub">
+                  <dt>Cupping Masterclasses</dt>
+                  <dd>Sat & Sun at 2:00 PM</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Transit & Parking Guidance -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Directions & Transit</span>
+              <ul class="transit-guidance-list">
+                <li><strong>Metro:</strong> M3 Cityringen (Nørrebros Runddel, 4 min walk)</li>
+                <li><strong>Bus:</strong> Line 5C (Jagtvej / Nørrebrogade, 3 min walk)</li>
+                <li><strong>Cycling:</strong> Ample dedicated bike parking on Jægersborggade</li>
+              </ul>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="atelier-info-section">
+              <span class="info-section-title">Direct Contact</span>
+              <div class="atelier-contacts-grid">
+                <a href="tel:+4532189022" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span><strong>Direct Line:</strong> +45 32 18 90 22</span>
+                </a>
+                <a href="mailto:cph@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span><strong>Concierge:</strong> cph@kaffastudios.com</span>
+                </a>
+                <a href="mailto:reservations@kaffastudios.com" class="atelier-contact-anchor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span><strong>Bookings:</strong> reservations@kaffastudios.com</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="atelier-card-actions">
+              <button type="button" class="btn-action-primary atelier-reserve-trigger" data-city="copenhagen">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Jaegersborggade+41+Copenhagen" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Jaegersborggade+41,2200+Copenhagen,Denmark" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="btn-action-secondary city-btn-copy" data-address="Jægersborggade 41, 2200 København N, Denmark">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Global Concierge & Support Banner -->
+        <div class="global-support-banner">
+          <div class="support-col">
+            <span class="support-label">Central Atelier Dispatch</span>
+            <a href="tel:+390284932140" class="support-val">+39 02 8493 2140</a>
+            <span class="support-sub">Mon–Sun 7:00 AM – 7:00 PM CET</span>
+          </div>
+          <div class="support-col">
+            <span class="support-label">Press & Architectural Sourcing</span>
+            <a href="mailto:press@kaffastudios.com" class="support-val">press@kaffastudios.com</a>
+            <span class="support-sub">Lookbooks & editorial requests</span>
+          </div>
+          <div class="support-col">
+            <span class="support-label">Private Events & Masterclasses</span>
+            <a href="mailto:reservations@kaffastudios.com" class="support-val">reservations@kaffastudios.com</a>
+            <span class="support-sub">Personal reply within 4 business hours</span>
+          </div>
         </div>
 
       </div>
@@ -446,6 +1588,411 @@
 
     </div>
   </footer>
+
+  <!-- DIRECTIONS & ATELIERS MODAL (Accessible Dialog for Get Directions action) -->
+  <aside id="directions-modal" class="directions-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="directions-modal-title">
+    <div class="modal-backdrop" id="directions-backdrop"></div>
+    <div class="modal-dialog-panel">
+      <div class="modal-dialog-header">
+        <div class="modal-title-group">
+          <span class="modal-eyebrow">Visit Our Spaces</span>
+          <h2 id="directions-modal-title" class="modal-title">Get Directions to Kaffa Studios</h2>
+        </div>
+        <button type="button" id="directions-close-btn" class="modal-close-btn" aria-label="Close directions modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-dialog-body">
+        <div class="city-selector-tabs" role="tablist" aria-label="Select café city location">
+          <button type="button" class="city-tab-btn active" role="tab" aria-selected="true" data-city="milan">Milano</button>
+          <button type="button" class="city-tab-btn" role="tab" aria-selected="false" data-city="kyoto">Kyoto</button>
+          <button type="button" class="city-tab-btn" role="tab" aria-selected="false" data-city="zurich">Zurich</button>
+          <button type="button" class="city-tab-btn" role="tab" aria-selected="false" data-city="copenhagen">Copenhagen</button>
+        </div>
+
+        <div class="city-details-view">
+          
+          <!-- Milan Details -->
+          <div class="city-detail-panel active" id="panel-milan" role="tabpanel">
+            <div class="modal-city-top-row">
+              <span class="detail-badge-flagship">Flagship Atelier & Roastery</span>
+              <span class="live-status-pill" data-city="milan">
+                <span class="status-pulse-dot" aria-hidden="true"></span>
+                <span class="status-text">Checking hours...</span>
+              </span>
+            </div>
+            <h3 class="city-location-name">Via Brera 14, Milano</h3>
+            <p class="city-location-neighborhood">Historical Design District • 20121 Milano, Italy</p>
+            
+            <div class="city-info-grid">
+              <div class="info-block">
+                <span class="info-label">Daily Hours</span>
+                <span class="info-val">Mon – Fri 7:00 AM – 6:00 PM • Sat – Sun 8:00 AM – 7:00 PM</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Transit & Metro</span>
+                <span class="info-val">Metro M2 (Lanza, 3 min) • M1 (Cairoli, 6 min) • Tram 1, 2, 12, 14</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Direct Contact</span>
+                <span class="info-val">
+                  <a href="tel:+390284932140" class="modal-tel-link">+39 02 8493 2140</a> • <a href="mailto:atelier@kaffastudios.com" class="modal-email-link">atelier@kaffastudios.com</a>
+                </span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Service Policy</span>
+                <span class="info-val">Espresso & café seating is walk-in only. Guided cuppings booked in advance.</span>
+              </div>
+            </div>
+
+            <div class="city-action-buttons">
+              <button type="button" class="city-btn city-btn-reserve atelier-reserve-trigger" data-city="milan">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Via+Brera+14+Milano" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Via+Brera+14,20121+Milano,Italy" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="city-btn city-btn-copy" data-address="Via Brera 14, 20121 Milano, Italy">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Kyoto Details -->
+          <div class="city-detail-panel" id="panel-kyoto" role="tabpanel">
+            <div class="modal-city-top-row">
+              <span class="detail-badge-flagship">River Atelier & Tea Counter</span>
+              <span class="live-status-pill" data-city="kyoto">
+                <span class="status-pulse-dot" aria-hidden="true"></span>
+                <span class="status-text">Checking hours...</span>
+              </span>
+            </div>
+            <h3 class="city-location-name">Kamogawa Sanjo, Kyoto</h3>
+            <p class="city-location-neighborhood">Nakagyo Ward • 604-8004 Kyoto, Japan</p>
+            
+            <div class="city-info-grid">
+              <div class="info-block">
+                <span class="info-label">Daily Hours</span>
+                <span class="info-val">Tue – Sun 7:30 AM – 5:30 PM • Closed Mondays</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Transit & Station</span>
+                <span class="info-val">Sanjo Keihan Station (Exit 2, 2 min walk) • Hankyu (7 min)</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Direct Contact</span>
+                <span class="info-val">
+                  <a href="tel:+81752548831" class="modal-tel-link">+81 75 254 8831</a> • <a href="mailto:kyoto@kaffastudios.com" class="modal-email-link">kyoto@kaffastudios.com</a>
+                </span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Service Policy</span>
+                <span class="info-val">Tatami tea benches walk-in only. Slow bar cupping sessions booked online.</span>
+              </div>
+            </div>
+
+            <div class="city-action-buttons">
+              <button type="button" class="city-btn city-btn-reserve atelier-reserve-trigger" data-city="kyoto">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Kamogawa+Sanjo+Kyoto" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Kamogawa+Sanjo,Nakagyo+Ward,604-8004+Kyoto,Japan" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="city-btn city-btn-copy" data-address="Kamogawa Sanjo, Nakagyo Ward, 604-8004 Kyoto, Japan">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Zurich Details -->
+          <div class="city-detail-panel" id="panel-zurich" role="tabpanel">
+            <div class="modal-city-top-row">
+              <span class="detail-badge-flagship">Old Town Atelier & Alpine Bar</span>
+              <span class="live-status-pill" data-city="zurich">
+                <span class="status-pulse-dot" aria-hidden="true"></span>
+                <span class="status-text">Checking hours...</span>
+              </span>
+            </div>
+            <h3 class="city-location-name">Augustinergasse 12, Zürich</h3>
+            <p class="city-location-neighborhood">Lindenhof Historic Center • 8001 Zürich, Switzerland</p>
+            
+            <div class="city-info-grid">
+              <div class="info-block">
+                <span class="info-label">Daily Hours</span>
+                <span class="info-val">Mon – Sat 7:30 AM – 5:00 PM • Closed Sundays</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Transit & Tram</span>
+                <span class="info-val">Tram 6, 7, 11, 13 (Rennweg stop, 2 min walk) • Zürich HB (8 min)</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Direct Contact</span>
+                <span class="info-val">
+                  <a href="tel:+41442114050" class="modal-tel-link">+41 44 211 4050</a> • <a href="mailto:zurich@kaffastudios.com" class="modal-email-link">zurich@kaffastudios.com</a>
+                </span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Service Policy</span>
+                <span class="info-val">Spring water bar & tables walk-in only. Coffee flights booked in advance.</span>
+              </div>
+            </div>
+
+            <div class="city-action-buttons">
+              <button type="button" class="city-btn city-btn-reserve atelier-reserve-trigger" data-city="zurich">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Augustinergasse+12+Zurich" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Augustinergasse+12,8001+Zurich,Switzerland" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="city-btn city-btn-copy" data-address="Augustinergasse 12, 8001 Zürich, Switzerland">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Copenhagen Details -->
+          <div class="city-detail-panel" id="panel-copenhagen" role="tabpanel">
+            <div class="modal-city-top-row">
+              <span class="detail-badge-flagship">Nordic Atelier & Bakery</span>
+              <span class="live-status-pill" data-city="copenhagen">
+                <span class="status-pulse-dot" aria-hidden="true"></span>
+                <span class="status-text">Checking hours...</span>
+              </span>
+            </div>
+            <h3 class="city-location-name">Jægersborggade 41, København</h3>
+            <p class="city-location-neighborhood">Nørrebro Design District • 2200 København N, Denmark</p>
+            
+            <div class="city-info-grid">
+              <div class="info-block">
+                <span class="info-label">Daily Hours</span>
+                <span class="info-val">Wed – Sun 8:00 AM – 5:30 PM • Closed Mon – Tue</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Transit & Train</span>
+                <span class="info-val">Metro M3 (Nørrebros Runddel, 4 min walk) • Bus Line 5C</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Direct Contact</span>
+                <span class="info-val">
+                  <a href="tel:+4532189022" class="modal-tel-link">+45 32 18 90 22</a> • <a href="mailto:cph@kaffastudios.com" class="modal-email-link">cph@kaffastudios.com</a>
+                </span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Service Policy</span>
+                <span class="info-val">Douglas fir tables walk-in only. Cupping masterclasses booked in advance.</span>
+              </div>
+            </div>
+
+            <div class="city-action-buttons">
+              <button type="button" class="city-btn city-btn-reserve atelier-reserve-trigger" data-city="copenhagen">
+                <span>Book Tasting Workshop</span>
+              </button>
+              <a href="https://maps.google.com/?q=Jaegersborggade+41+Copenhagen" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com/?address=Jaegersborggade+41,2200+Copenhagen,Denmark" target="_blank" rel="noopener noreferrer" class="city-btn city-btn-maps">
+                <span>Apple Maps</span>
+              </a>
+              <button type="button" class="city-btn city-btn-copy" data-address="Jægersborggade 41, 2200 København N, Denmark">
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-dialog-footer">
+          <a href="#ateliers" class="modal-view-all-link" id="modal-jump-ateliers">View all global ateliers & architecture on page →</a>
+          <span id="copy-toast" class="copy-feedback-toast" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- RESERVATION MODAL (Accessible Dialog for Private Cuppings & Tasting Sessions) -->
+  <aside id="reservation-modal" class="reservation-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reservation-modal-title">
+    <div class="modal-backdrop" id="reservation-backdrop"></div>
+    <div class="modal-dialog-panel reservation-dialog-panel">
+      
+      <div class="modal-dialog-header">
+        <div class="modal-title-group">
+          <span class="modal-eyebrow">Private Cupping & Slow Bar Masterclass</span>
+          <h2 id="reservation-modal-title" class="modal-title">Book an Atelier Tasting Experience</h2>
+        </div>
+        <button type="button" id="reservation-close-btn" class="modal-close-btn" aria-label="Close reservation dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-dialog-body reservation-dialog-body">
+        
+        <!-- Walk-In Policy Reminder -->
+        <div class="reservation-policy-notice">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <p>
+            <strong>Note on Café Seating:</strong> Walk-ins are always welcomed for all daily coffee and pastry service. No reservation is ever required for café seating. Use this form to book an intimate <strong>Guided Tasting Workshop or Slow Bar Flight</strong> with our head roaster.
+          </p>
+        </div>
+
+        <form id="reservation-form" class="reservation-form" novalidate>
+          
+          <!-- Step 1: Atelier Location -->
+          <div class="form-group">
+            <label for="res-city" class="form-label">Select Atelier Location <span class="req">*</span></label>
+            <select id="res-city" name="city" class="form-select" required>
+              <option value="milan" selected>Milano — Via Brera 14 (Flagship Roastery)</option>
+              <option value="kyoto">Kyoto — Kamogawa Sanjo (River Atelier)</option>
+              <option value="zurich">Zürich — Augustinergasse 12 (Old Town Atelier)</option>
+              <option value="copenhagen">København — Jægersborggade 41 (Nordic Atelier)</option>
+            </select>
+          </div>
+
+          <!-- Step 2: Experience Offering -->
+          <div class="form-group">
+            <label for="res-experience" class="form-label">Tasting Experience <span class="req">*</span></label>
+            <select id="res-experience" name="experience" class="form-select" required>
+              <option value="flight" selected>Single-Origin Omakase Flight (3 Pour-Overs + Pastry Pairing, 45 min — $35/guest)</option>
+              <option value="cupping">Sensory Cupping & Roast Masterclass (6 Terroir Lots with Roaster, 60 min — $55/guest)</option>
+              <option value="private">Private Atelier Hire & Tasting Bar (Exclusive Slow Bar, up to 8 guests — $280)</option>
+            </select>
+          </div>
+
+          <!-- Step 3: Date, Time & Party Size -->
+          <div class="form-row-three">
+            <div class="form-group">
+              <label for="res-date" class="form-label">Date <span class="req">*</span></label>
+              <input type="date" id="res-date" name="date" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="res-time" class="form-label">Time Slot <span class="req">*</span></label>
+              <select id="res-time" name="time" class="form-select" required>
+                <option value="10:00">10:00 AM (Morning Flight)</option>
+                <option value="11:30">11:30 AM (Viennoiserie Pairing)</option>
+                <option value="14:00" selected>02:00 PM (Afternoon Cupping)</option>
+                <option value="15:30">03:30 PM (Terroir Exploration)</option>
+                <option value="17:00">05:00 PM (Twilight Roast Session)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="res-guests" class="form-label">Guests <span class="req">*</span></label>
+              <select id="res-guests" name="guests" class="form-select" required>
+                <option value="1">1 Guest (Solo Tasting)</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5–8 Guests (Group Flight)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Step 4: Guest Contact Details -->
+          <div class="form-row-two">
+            <div class="form-group">
+              <label for="res-name" class="form-label">Full Name <span class="req">*</span></label>
+              <input type="text" id="res-name" name="name" class="form-input" placeholder="e.g. Elena Rostova" autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="res-email" class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="res-email" name="email" class="form-input" placeholder="elena@example.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="form-row-two">
+            <div class="form-group">
+              <label for="res-phone" class="form-label">Telephone Number <span class="req">*</span></label>
+              <input type="tel" id="res-phone" name="phone" class="form-input" placeholder="+39 02 ... / +1 ..." autocomplete="tel" required>
+            </div>
+
+            <div class="form-group">
+              <label for="res-notes" class="form-label">Dietary & Pastry Notes</label>
+              <input type="text" id="res-notes" name="notes" class="form-input" placeholder="Allergies, oat milk preference, celebrations...">
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="reservation-form-actions">
+            <button type="submit" id="res-submit-btn" class="res-submit-btn">
+              <span>Confirm Workshop Reservation</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </button>
+            <span class="res-disclaimer">Zero cancellation fee up to 24 hours prior. Confirmation sent immediately via email.</span>
+          </div>
+
+        </form>
+
+        <!-- Dynamic Confirmation Screen -->
+        <div id="reservation-confirmation" class="reservation-confirmation" style="display: none;">
+          <div class="conf-badge">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3 class="conf-title">Reservation Confirmed</h3>
+          <p class="conf-subtitle">We look forward to welcoming you to the Slow Bar counter.</p>
+
+          <div class="conf-details-card">
+            <div class="conf-row">
+              <span class="conf-label">Reference</span>
+              <strong id="conf-ref-code" class="conf-val-code">#KAFFA-9824</strong>
+            </div>
+            <div class="conf-row">
+              <span class="conf-label">Atelier</span>
+              <span id="conf-atelier-name" class="conf-val">Milano (Via Brera 14)</span>
+            </div>
+            <div class="conf-row">
+              <span class="conf-label">Experience</span>
+              <span id="conf-exp-name" class="conf-val">Single-Origin Omakase Flight</span>
+            </div>
+            <div class="conf-row">
+              <span class="conf-label">Date & Time</span>
+              <span id="conf-datetime" class="conf-val">Tomorrow at 02:00 PM</span>
+            </div>
+            <div class="conf-row">
+              <span class="conf-label">Party</span>
+              <span id="conf-party" class="conf-val">2 Guests</span>
+            </div>
+            <div class="conf-row">
+              <span class="conf-label">Guest</span>
+              <span id="conf-guest" class="conf-val">Elena Rostova (elena@example.com)</span>
+            </div>
+          </div>
+
+          <p class="conf-footer-text">
+            A confirmation dispatch has been routed to your inbox. For same-day changes or questions, call the atelier directly at <a href="tel:+390284932140" id="conf-tel-link">+39 02 8493 2140</a>.
+          </p>
+
+          <button type="button" id="res-conf-close-btn" class="res-conf-close-btn">Done</button>
+        </div>
+
+      </div>
+    </div>
+  </aside>
 
   <!-- SLIDE-OVER BAG DRAWER (In Caveat font, anti-card) -->
   <aside id="cart-drawer" class="cart-drawer menu-font" aria-hidden="true" role="dialog" aria-labelledby="cart-title">
